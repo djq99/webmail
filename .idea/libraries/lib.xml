@@ -1,0 +1,39 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/javax.servlet.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.annotation.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.servlet.jsp.jstl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.jms.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.transaction.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.resource.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.servlet.jsp.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.persistence.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.ejb.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jetty-distribution-8.1.16.v20140903/lib/jetty-ajp-8.1.16.v20140903.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jetty-distribution-8.1.16.v20140903/lib/jetty-annotations-8.1.16.v20140903.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jetty-distribution-8.1.16.v20140903/lib/jetty-client-8.1.16.v20140903.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jetty-distribution-8.1.16.v20140903/lib/jetty-continuation-8.1.16.v20140903.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jetty-distribution-8.1.16.v20140903/lib/jetty-deploy-8.1.16.v20140903.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jetty-distribution-8.1.16.v20140903/lib/jetty-http-8.1.16.v20140903.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jetty-distribution-8.1.16.v20140903/lib/jetty-io-8.1.16.v20140903.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jetty-distribution-8.1.16.v20140903/lib/jetty-jmx-8.1.16.v20140903.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jetty-distribution-8.1.16.v20140903/lib/jetty-jndi-8.1.16.v20140903.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jetty-distribution-8.1.16.v20140903/lib/jetty-overlay-deployer-8.1.16.v20140903.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jetty-distribution-8.1.16.v20140903/lib/jetty-plus-8.1.16.v20140903.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jetty-distribution-8.1.16.v20140903/lib/jetty-policy-8.1.16.v20140903.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jetty-distribution-8.1.16.v20140903/lib/jetty-rewrite-8.1.16.v20140903.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jetty-distribution-8.1.16.v20140903/lib/jetty-security-8.1.16.v20140903.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jetty-distribution-8.1.16.v20140903/lib/jetty-server-8.1.16.v20140903.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jetty-distribution-8.1.16.v20140903/lib/jetty-servlet-8.1.16.v20140903.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jetty-distribution-8.1.16.v20140903/lib/jetty-servlets-8.1.16.v20140903.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jetty-distribution-8.1.16.v20140903/lib/jetty-util-8.1.16.v20140903.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jetty-distribution-8.1.16.v20140903/lib/jetty-webapp-8.1.16.v20140903.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jetty-distribution-8.1.16.v20140903/lib/jetty-websocket-8.1.16.v20140903.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jetty-distribution-8.1.16.v20140903/lib/jetty-xml-8.1.16.v20140903.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jetty-distribution-8.1.16.v20140903/lib/servlet-api-3.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
