@@ -12,7 +12,7 @@ public class WebServer {
         // Create a basic jetty server object that will listen on port 8080.  Note that if you set this to port 0
         // then a randomly available port will be assigned that you can either look in the logs for the port,
         // or programmatically obtain it for use in test cases.
-        Server server = new Server(8084);
+        Server server = new Server(8086);
 
         // The ServletHandler is a dead simple way to create a context handler that is backed by an instance of a
         // Servlet.  This handler then needs to be registered with the Server object.
@@ -27,7 +27,7 @@ public class WebServer {
 
         // Start things up! By using the server.join() the server thread will join with the current thread.
         // See "http://docs.oracle.com/javase/1.5.0/docs/api/java/lang/Thread.html#join()" for more details.
-        WebAppContext webAppContext = new WebAppContext("web","/Dmail");
+        WebAppContext webAppContext = new WebAppContext("web","/src");
 
         webAppContext.setContextPath("/");
         webAppContext.setResourceBase("web");

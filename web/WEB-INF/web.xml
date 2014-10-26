@@ -12,6 +12,6 @@
         <url-pattern>register</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
-        <welcome-file>register.html</welcome-file>
+        <welcome-file>Home.html</welcome-file>
     </welcome-file-list>
 </web-app>

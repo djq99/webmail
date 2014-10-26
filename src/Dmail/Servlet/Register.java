@@ -9,6 +9,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServlet;
+
+import Dmail.dao.UserDao;
+import Dmail.model.User;
+import Dmail.Utils.DbFactory;
+import java.sql.Connection;
 public class Register extends HttpServlet {
 
     @Override
@@ -16,7 +21,6 @@ public class Register extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html");
         response.setStatus(HttpServletResponse.SC_OK);
-        response.getWriter().println("<h1>Hello SimpleServlet</h1>");
 
     }
 
@@ -24,6 +28,15 @@ public class Register extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html");
         response.setStatus(HttpServletResponse.SC_OK);
-        response.getWriter().println("<h1>Hello SimpleServlet</h1>");
+        User user = new User();
+        user.setUsername(request.getParameter("username"));
+        user.setPassword(request.getParameter("password"));
+        Connection conn = DbFactory.getConnection();
+        UserDao userDao = new UserDao();
+        if(userDao.createUser(user,conn))
+        {
+            System.out.println("插入成功!");
+        }
+
     }
 }

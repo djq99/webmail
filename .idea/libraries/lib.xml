@@ -1,15 +1,6 @@
 <component name="libraryTable">
   <library name="lib">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib/javax.servlet.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/javax.annotation.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/javax.servlet.jsp.jstl.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/javax.jms.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/javax.transaction.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/javax.resource.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/javax.servlet.jsp.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/javax.persistence.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/javax.ejb.jar!/" />
       <root url="jar://$USER_HOME$/Downloads/jetty-distribution-8.1.16.v20140903/lib/jetty-ajp-8.1.16.v20140903.jar!/" />
       <root url="jar://$USER_HOME$/Downloads/jetty-distribution-8.1.16.v20140903/lib/jetty-annotations-8.1.16.v20140903.jar!/" />
       <root url="jar://$USER_HOME$/Downloads/jetty-distribution-8.1.16.v20140903/lib/jetty-client-8.1.16.v20140903.jar!/" />
@@ -32,8 +23,11 @@
       <root url="jar://$USER_HOME$/Downloads/jetty-distribution-8.1.16.v20140903/lib/jetty-websocket-8.1.16.v20140903.jar!/" />
       <root url="jar://$USER_HOME$/Downloads/jetty-distribution-8.1.16.v20140903/lib/jetty-xml-8.1.16.v20140903.jar!/" />
       <root url="jar://$USER_HOME$/Downloads/jetty-distribution-8.1.16.v20140903/lib/servlet-api-3.0.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/sqlite-jdbc-3.8.7.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/Downloads/sqlite-jdbc-3.8.7.jar!/" />
+    </SOURCES>
   </library>
 </component>
