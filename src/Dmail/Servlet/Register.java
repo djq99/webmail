@@ -19,9 +19,6 @@ public class Register extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html");
-        response.setStatus(HttpServletResponse.SC_OK);
-
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -35,7 +32,9 @@ public class Register extends HttpServlet {
         UserDao userDao = new UserDao();
         if(userDao.createUser(user,conn))
         {
-            System.out.println("插入成功!");
+            request.getSession().setAttribute("userinfo",user);
+
+
         }
 
     }
