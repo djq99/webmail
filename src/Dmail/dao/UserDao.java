@@ -9,7 +9,6 @@ public class UserDao extends CommonDao{
 
     public boolean findUser(User user, Connection conn)
     {
-        System.out.println(user.getUsername()+user.getPassword());
         String sql = "select username,password from userinfo where username='"+user.getUsername()+"' and password='"+user.getPassword()+"'";
         ResultSet rs = null;
         try
@@ -47,5 +46,26 @@ public class UserDao extends CommonDao{
             e.printStackTrace();
         }
         return false;
+    }
+    public int returnUserID(User user, Connection conn)
+    {
+        String sql = "select userId from userinfo where username='"+user.getUsername()+"' and password='"+user.getPassword()+"'";
+        ResultSet rs = null;
+        try
+        {
+            rs = execSelect(sql, conn);
+            if (rs.next())
+            {
+               rs.getInt(1);
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally
+        {
+            close(null, rs);
+        }
+        return -1;
     }
 }

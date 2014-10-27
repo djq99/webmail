@@ -5,7 +5,7 @@ package Dmail.model;
  */
 public class User {
 
-    private String userid;
+    private int userid;
 
     private String password;
 
@@ -30,12 +30,12 @@ public class User {
         this.password = password;
     }
 
-    public String getUserid()
+    public int getUserid()
     {
         return userid;
     }
 
-    public void setUserid(String userid)
+    public void setUserid(int userid)
     {
         this.userid = userid;
     }

@@ -33,8 +33,7 @@ public class Register extends HttpServlet {
         if(userDao.createUser(user,conn))
         {
             request.getSession().setAttribute("userinfo",user);
-
-
+            response.sendRedirect("Dmail.html");
         }
 
     }
