@@ -35,6 +35,7 @@ public class Login extends HttpServlet {
         user.setUserid(uid);
         if(userDao.findUser(user,conn))
         {
+            System.out.println("登录成功");
             request.getSession().setAttribute("userinfo",user);
             response.sendRedirect("Dmail.html");
         }
