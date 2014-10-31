@@ -6,6 +6,7 @@ import Dmail.Servlet.Register;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletHandler;
 import org.eclipse.jetty.webapp.WebAppContext;
+import org.eclipse.jetty.server.ssl.ServletSSL;
 
 public class WebServer {
     public static void main(String[] args) throws Exception {
@@ -27,6 +28,7 @@ public class WebServer {
 
         // Start things up! By using the server.join() the server thread will join with the current thread.
         // See "http://docs.oracle.com/javase/1.5.0/docs/api/java/lang/Thread.html#join()" for more details.
+
         WebAppContext webAppContext = new WebAppContext("web","/src");
 
         webAppContext.setContextPath("/");
