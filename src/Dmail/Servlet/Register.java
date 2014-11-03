@@ -14,6 +14,7 @@ import Dmail.dao.UserDao;
 import Dmail.model.User;
 import Dmail.Utils.DbFactory;
 import java.sql.Connection;
+import Dmail.mail.SslPopClient;
 public class Register extends HttpServlet {
 
     @Override
@@ -28,12 +29,19 @@ public class Register extends HttpServlet {
         User user = new User();
         user.setUsername(request.getParameter("username"));
         user.setPassword(request.getParameter("password"));
+        user.setEmailaddress(request.getParameter("emailAddress"));
+        user.setEmailPassword(request.getParameter("emailPassword"));
         Connection conn = DbFactory.getConnection();
         UserDao userDao = new UserDao();
         if(userDao.createUser(user,conn))
         {
-            request.getSession().setAttribute("userinfo",user);
-            response.sendRedirect("Dmail.html");
+            boolean check = SslPopClient.verifyEmail(user.getEmailaddress(),user.getEmailPassword());
+            if(check == true)
+            {
+                request.getSession().setAttribute("userinfo",user);
+                response.sendRedirect("Dmail.html");
+            }
+
         }
 
     }

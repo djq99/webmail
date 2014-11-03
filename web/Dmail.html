@@ -7,6 +7,7 @@
 <link href="bootstrap-3.2.0-dist/css/dashboard.css" rel="stylesheet">
 <script src="bootstrap-3.2.0-dist/js/jquery-1.11.1.js"></script>
 <script src="bootstrap-3.2.0-dist/js/bootstrap.js"></script>
+
 </head>
 
 <body>
@@ -31,8 +32,22 @@
   <div class="row">
     <div class="col-sm-3 col-md-2 sidebar">
       <ul class="nav nav-sidebar">
-        <li><a href="#">check mail</a></li>
-        <li><a href="#">Inbox<span class="badge">42</span></a></li>
+        <li><a href="#" id="checkMail">check mail</a></li>
+        <li><a href="#">Inbox <span class="badge" id ="mailNumbers"></span></a></li>
+          <script>
+             $('#checkMail').click(function(){
+                 $.post("mail",
+                 {
+                     request:"mailNumber"
+                 },
+                 function(data,status){
+                     if(status == "success")
+                     {
+                         $("#mailNumbers").html(data);
+                     }
+                 })
+             })
+          </script>
         <li><a herf="#edit" data-toggle="modal" data-target="#edit">Compose</a></li>
         <li><a href="#">Trash</a></li>
       </ul>
@@ -40,7 +55,7 @@
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
       <div class="row">
         <div class="span2">
-          <input class="btn btn-danger"type="button" value="delete">
+          <input class="btn btn-danger"type="button" id="delete" value="delete">
           <input class="btn btn-danger"type="button" value="move">
         </div>
       </div>
@@ -76,13 +91,6 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td><input type="checkbox"></td>
-              <td>djq</td>
-              <td>HelloWord</td>
-              <td>26 October 2014</td>
-              <td>1kb</td>
-            </tr>
           </tbody>
         </table>
       </div>

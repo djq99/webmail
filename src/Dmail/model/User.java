@@ -11,6 +11,10 @@ public class User {
 
     private String username;
 
+    private String emailaddress;
+
+    private String emailPassword;
+
     public void setUsername(String username)
     {
         this.username = username;
@@ -40,4 +44,19 @@ public class User {
         this.userid = userid;
     }
 
+    public String getEmailaddress() {
+        return emailaddress;
+    }
+
+    public void setEmailaddress(String emailaddress) {
+        this.emailaddress = emailaddress;
+    }
+
+    public String getEmailPassword() {
+        return emailPassword;
+    }
+
+    public void setEmailPassword(String emailPassword) {
+        this.emailPassword = emailPassword;
+    }
 }
