@@ -29,7 +29,7 @@ public class UserDao extends CommonDao{
         }
         return false;
     }
-    public User returnUserinfo(String username, String password, Connection conn)
+    public User returnUserInfo(String username, String password, Connection conn)
     {
         ResultSet rs = null;
         try

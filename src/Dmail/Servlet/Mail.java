@@ -29,7 +29,7 @@ public class Mail extends HttpServlet {
         UserDao userDao = new UserDao();
         Connection conn = DbFactory.getConnection();
         String clientRequest = request.getParameter("request");
-        user = userDao.returnUserinfo(user.getUsername(),user.getPassword(),conn);
+        user = userDao.returnUserInfo(user.getUsername(),user.getPassword(),conn);
         //return how many emails pulled from pop3
         int mailNumber;
         if(clientRequest.equals("mailNumber"))

@@ -6,17 +6,19 @@ package Dmail.model;
 import java.util.List;
 public class Email {
 
-    private int emailID;
+    private String emailID;
 
     private boolean isNew;
 
-    private double size;
+    private int size;
 
     private String toList;
 
     private String from;
 
     private String title;
+
+    private String contentType;
 
     private String content;
 
@@ -28,12 +30,12 @@ public class Email {
 
     private String userID;
 
-    public int getEmailID()
+    public String getEmailID()
     {
         return emailID;
     }
 
-    public void setEmailID(int emailID)
+    public void setEmailID(String emailID)
     {
         this.emailID = emailID;
     }
@@ -48,12 +50,12 @@ public class Email {
         this.isNew =isNew;
     }
 
-    public double getSize()
+    public int getSize()
     {
         return size;
     }
 
-    public void setSize(double size)
+    public void setSize(int size)
     {
         this.size = size;
     }
@@ -135,5 +137,13 @@ public class Email {
     public void setUserID(String userID)
     {
         this.userID = userID;
+    }
+
+    public String getContentType() {
+        return contentType;
+    }
+
+    public void setContentType(String contentType) {
+        this.contentType = contentType;
     }
 }

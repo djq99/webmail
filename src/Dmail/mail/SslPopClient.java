@@ -1,10 +1,9 @@
 package Dmail.mail;
 
+import Dmail.model.Email;
 import Dmail.model.User;
-
 import java.io.*;
 import java.net.UnknownHostException;
-import java.util.ArrayList;
 import javax.net.ssl.*;
 public class SslPopClient{
 
@@ -18,6 +17,7 @@ public class SslPopClient{
     private static final String CMD_NOOP="NOOP";
     private static final String CMD_QUIT="QUIT";
     private static final String CMD_TOP="TOP";
+    private static final String CMD_UIDL="UIDL";
     private static final int sslPort = 995;
     private SSLSocket popSocket;
     private User user;
@@ -72,10 +72,11 @@ public class SslPopClient{
     }
     public static void main(String[] args) {
        User user = new User();
-        user.setEmailaddress("djq1990@126.com");
+        user.setEmailaddress("imdjq1990@gmail.com");
         user.setEmailPassword("djq199031415926");
-       ArrayList<String>result = returnEmailHeader(user);
-        System.out.println(result.get(1));
+        int number = returnEmailNumber(user);
+        returnEmailInfo(user,number);
+
 
     }
    public static int returnEmailNumber(User user)
@@ -118,12 +119,13 @@ public class SslPopClient{
         }
         return num;
     }
-    public static ArrayList<String> returnEmailHeader(User user)
+    public static Email[] returnEmailInfo(User user, int emailNumber)
     {
         String popServer = user.getEmailaddress().substring(user.getEmailaddress().indexOf('@') + 1);
         popServer ="pop."+popServer;
         SSLSocketFactory f = (SSLSocketFactory) SSLSocketFactory.getDefault();
-        ArrayList<String> emailHeader = new ArrayList<String>();
+      //  System.out.println(emailNumber);
+        Email mailInfo[] = new Email[emailNumber];
         try
         {
             SSLSocket c = (SSLSocket) f.createSocket(popServer, sslPort);
@@ -140,28 +142,75 @@ public class SslPopClient{
             w.write(CMD_PASS + " " + user.getEmailPassword() + "\r\n");
             w.flush();
             line = r.readLine();
-            //get email number
-            w.write(CMD_STAT +"\r\n");
-            w.flush();
-            line = r.readLine();
-            String arrays[] = line.split(" ");
-            int emailNumber = Integer.parseInt(arrays[1]);
-            String tempHeader = "";
-            for(int i = 1; i<=emailNumber;i++)
+            for(int i = 1; i <= emailNumber;i++)
             {
                 //request read ith email's header
+                mailInfo[i-1] = new Email();
                 w.write(CMD_TOP+" "+i+" "+0+"\r\n");
                 w.flush();
-                tempHeader = "";
                 while(!(line=r.readLine()).equals(".")&&!line.contains("ERR") )
                 {
-                    tempHeader = tempHeader+line+"\r\n";
-                }
-                if(tempHeader!="")
-                {
-                    emailHeader.add(tempHeader);
+                    if(line.contains("Date: "))
+                    {
+                        String date = line.substring(line.indexOf(":") + 2);
+                        mailInfo[i-1].setMailDate(date);
+                    }
+                    if(line.contains("Subject: "))
+                    {
+                        mailInfo[i-1].setTitle(line.substring(line.indexOf(":") + 2));
+                    }
+                    if(line.contains("From: "))
+                    {
+                        mailInfo[i-1].setFrom(line.substring(line.indexOf(":") + 2));
+                    }
+                    if(line.contains("To: "))
+                    {
+                        mailInfo[i-1].setToList(line.substring(line.indexOf(":") + 2));
+                    }
+                    if(line.contains("Content-Type: "))
+                    {
+                        mailInfo[i-1].setContentType(line.substring(line.indexOf(":") + 2));
+                    }
                 }
             }
+            //get email size
+            w.write(CMD_LIST+"\r\n");
+            w.flush();
+            int i = 0;
+            while(!(line=r.readLine()).equals(".")&&!line.contains("ERR"))
+            {
+                if(line.contains("OK"))
+                {
+                    continue;
+                }
+                if(i < emailNumber)
+                {
+                    String arrays[] = line.split(" ");
+                    String result = arrays[1];
+                    int size = Integer.parseInt(result);
+                    mailInfo[i].setSize(size);
+                    i++;
+                }
+            }
+            //get email ID
+             w.write(CMD_UIDL+"\r\n");
+             w.flush();
+            i=0;
+            while(!(line=r.readLine()).equals(".")&&!line.contains("ERR"))
+            {
+                if(line.contains("OK"))
+                {
+                    continue;
+                }
+                if(i < emailNumber)
+                {
+                    String arrays[] = line.split(" ");
+                    String result = arrays[1];
+                    mailInfo[i].setEmailID(result);
+                    i++;
+                }
+            }
+            w.flush();
             r.close();
             w.close();
             c.close();
@@ -170,6 +219,6 @@ public class SslPopClient{
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return emailHeader;
+        return mailInfo;
     }
 }
