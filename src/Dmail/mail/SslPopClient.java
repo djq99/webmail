@@ -5,6 +5,7 @@ import Dmail.model.User;
 import java.io.*;
 import java.net.UnknownHostException;
 import javax.net.ssl.*;
+import sun.misc.BASE64Decoder;
 public class SslPopClient{
 
     private static final String CMD_USER="USER";
@@ -75,7 +76,7 @@ public class SslPopClient{
         user.setEmailaddress("imdjq1990@gmail.com");
         user.setEmailPassword("djq199031415926");
         int number = returnEmailNumber(user);
-        returnEmailInfo(user,number);
+        Email[] mailHeaders=returnEmail(user,number);
 
 
     }
@@ -119,13 +120,12 @@ public class SslPopClient{
         }
         return num;
     }
-    public static Email[] returnEmailInfo(User user, int emailNumber)
+    public static Email[] returnEmail(User user, int emailNumber)
     {
         String popServer = user.getEmailaddress().substring(user.getEmailaddress().indexOf('@') + 1);
         popServer ="pop."+popServer;
         SSLSocketFactory f = (SSLSocketFactory) SSLSocketFactory.getDefault();
-      //  System.out.println(emailNumber);
-        Email mailInfo[] = new Email[emailNumber];
+        Email mail[] = new Email[emailNumber];
         try
         {
             SSLSocket c = (SSLSocket) f.createSocket(popServer, sslPort);
@@ -142,10 +142,11 @@ public class SslPopClient{
             w.write(CMD_PASS + " " + user.getEmailPassword() + "\r\n");
             w.flush();
             line = r.readLine();
+            //get headers
             for(int i = 1; i <= emailNumber;i++)
             {
                 //request read ith email's header
-                mailInfo[i-1] = new Email();
+                mail[i-1] = new Email();
                 w.write(CMD_TOP+" "+i+" "+0+"\r\n");
                 w.flush();
                 while(!(line=r.readLine()).equals(".")&&!line.contains("ERR") )
@@ -153,28 +154,93 @@ public class SslPopClient{
                     if(line.contains("Date: "))
                     {
                         String date = line.substring(line.indexOf(":") + 2);
-                        mailInfo[i-1].setMailDate(date);
+                        mail[i-1].setMailDate(date);
                     }
                     if(line.contains("Subject: "))
                     {
-                        mailInfo[i-1].setTitle(line.substring(line.indexOf(":") + 2));
+                        mail[i-1].setTitle(line.substring(line.indexOf(":") + 2));
                     }
                     if(line.contains("From: "))
                     {
-                        mailInfo[i-1].setFrom(line.substring(line.indexOf(":") + 2));
+                        mail[i-1].setFrom(line.substring(line.indexOf(":") + 2));
                     }
                     if(line.contains("To: "))
                     {
-                        mailInfo[i-1].setToList(line.substring(line.indexOf(":") + 2));
+                        mail[i-1].setToList(line.substring(line.indexOf(":") + 2));
                     }
                     if(line.contains("Content-Type: "))
                     {
-                        mailInfo[i-1].setContentType(line.substring(line.indexOf(":") + 2));
+                        mail[i-1].setContentType(line.substring(line.indexOf(":") + 2,line.indexOf(";")));
+                    }
+                    if(line.contains("boundary="))
+                    {
+                       // System.out.println(line.substring(line.indexOf("boundary=")+12,line.length()-3));
+                        mail[i-1].setContentBoundary(line.substring(line.indexOf("boundary=")+12,line.length()-3));
                     }
                 }
+                mail[i-1].setEncodingType("");
+            }
+            //get content
+            for(int i = 1; i <= emailNumber;i++)
+            {
+                w.write(CMD_RETR+" "+i+"\r\n");
+                w.flush();
+                int numberOfBoundary = 0;
+                String temp = "";
+                while (!(line=r.readLine()).equals(".")&&!line.contains("ERR"))
+                {
+                    //if it is MIME
+                    if(line.contains("Content-Type:")&&(line.contains("text/html")))
+                    {
+                        mail[i-1].setContentType("text/html");
+                        //finish reading empty between header and body
+                        while((line=r.readLine()).length()!=0)
+                        {
+                            if(line.contains("Content-Transfer-Encoding:") && line.contains("base64"))
+                            {
+                                mail[i-1].setEncodingType("base64");
+                            }
+                        }
+                            while(!(line=r.readLine()).contains(mail[i-1].getContentBoundary()))
+                            {
+                                temp = temp+line+"\r\n";
+                                if(line.equals("."))
+                                {
+                                    break;
+                                }
+                            }
+
+                    }
+
+                  /*  else if(line.contains("Content-Type:")&&line.contains("text/plain"))
+                    {
+                        mail[i-1].setContentType("text/plain");
+                        while((line=r.readLine()).length()!=0)
+                        {
+                            if(line.contains("Content-Transfer-Encoding:") && line.contains("base64"))
+                            {
+                                mail[i-1].setEncodingType("base64");
+                            }
+                        }
+                        while (!(line=r.readLine()).equals("."))
+                        {
+                            temp = temp+line+"\r\n";
+                        }
+                    }
+                    if(line.equals("."))
+                    {
+                        break;
+                    }*/
+                }
+                if(mail[i-1].getEncodingType().contains("base64"))
+                {
+                    BASE64Decoder b64 = new BASE64Decoder();
+                    temp = new String(b64.decodeBuffer(temp));
+                }
+                mail[i-1].setContent(temp);
             }
             //get email size
-            w.write(CMD_LIST+"\r\n");
+    /*        w.write(CMD_LIST+"\r\n");
             w.flush();
             int i = 0;
             while(!(line=r.readLine()).equals(".")&&!line.contains("ERR"))
@@ -188,7 +254,7 @@ public class SslPopClient{
                     String arrays[] = line.split(" ");
                     String result = arrays[1];
                     int size = Integer.parseInt(result);
-                    mailInfo[i].setSize(size);
+                    mail[i].setSize(size);
                     i++;
                 }
             }
@@ -206,10 +272,10 @@ public class SslPopClient{
                 {
                     String arrays[] = line.split(" ");
                     String result = arrays[1];
-                    mailInfo[i].setEmailID(result);
+                    mail[i].setEmailID(result);
                     i++;
                 }
-            }
+            }*/
             w.flush();
             r.close();
             w.close();
@@ -219,6 +285,6 @@ public class SslPopClient{
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return mailInfo;
+        return mail;
     }
 }

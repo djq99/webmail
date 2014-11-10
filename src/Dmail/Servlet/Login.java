@@ -56,13 +56,13 @@ public class Login extends HttpServlet {
             //deal with email headers
             int emailNumber = SslPopClient.returnEmailNumber(user);
 
-            Email[] mailInfo= SslPopClient.returnEmailInfo(user,emailNumber);
+            Email[] mail= SslPopClient.returnEmail(user,emailNumber);
 
-            for(int i=0;i < mailInfo.length;i++)
+            for(int i=0;i < mail.length;i++)
             {
-                if(!mailDao.checkMail(mailInfo[i],user,conn))
+                if(!mailDao.checkMail(mail[i],user,conn))
                 {
-                    mailDao.createMailHeader(mailInfo[i],user,conn);
+                    mailDao.createMailHeader(mail[i],user,conn);
                 }
             }
             response.sendRedirect("Dmail.html");

@@ -20,6 +20,34 @@ public class Email {
 
     private String contentType;
 
+    private String contentBoundary;
+
+    private String encodingType;
+
+    public String getEncodingType() {
+        return encodingType;
+    }
+
+    public void setEncodingType(String encodingType) {
+        this.encodingType = encodingType;
+    }
+
+    public boolean isNew() {
+        return isNew;
+    }
+
+    public void setNew(boolean isNew) {
+        this.isNew = isNew;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
     private String content;
 
     private String mailDate;
@@ -63,16 +91,6 @@ public class Email {
     public void setToList(String toList)
     {
         this.toList = toList;
-    }
-
-    public String getContent()
-    {
-        return content;
-    }
-
-    public void setContent(String content)
-    {
-        this.content = content;
     }
 
     public String getFrom()
@@ -145,5 +163,13 @@ public class Email {
 
     public void setContentType(String contentType) {
         this.contentType = contentType;
+    }
+
+    public String getContentBoundary() {
+        return contentBoundary;
+    }
+
+    public void setContentBoundary(String contentBoundary) {
+        this.contentBoundary = contentBoundary;
     }
 }
