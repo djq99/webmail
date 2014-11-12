@@ -32,11 +32,11 @@ public class Mail extends HttpServlet {
         Email []mail = SslPopClient.returnEmail(user,emailNumber);
        // PrintWriter out = response.getWriter();
        // response.setContentType("application/octet-stream;");
-        response.setContentType("text/html");
+        response.setContentType("text/plain");
         //System.out.println(mail[0].getContent());
 
        // out.println(emailNumber);
-        response.getOutputStream().print(mail[6].getContent());
+        response.getOutputStream().print(mail[5].getContent());
        // out.println(mail[0].getContent());
 
     }

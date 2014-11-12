@@ -6,6 +6,7 @@ import java.io.*;
 import java.net.UnknownHostException;
 import javax.net.ssl.*;
 import sun.misc.BASE64Decoder;
+import Dmail.Utils.QpDecoding;
 public class SslPopClient{
 
     private static final String CMD_USER="USER";
@@ -180,67 +181,9 @@ public class SslPopClient{
                 }
                 mail[i-1].setEncodingType("");
             }
-            //get content
-            for(int i = 1; i <= emailNumber;i++)
-            {
-                w.write(CMD_RETR+" "+i+"\r\n");
-                w.flush();
-                int numberOfBoundary = 0;
-                String temp = "";
-                while (!(line=r.readLine()).equals(".")&&!line.contains("ERR"))
-                {
-                    //if it is MIME
-                    if(line.contains("Content-Type:")&&(line.contains("text/html")))
-                    {
-                        mail[i-1].setContentType("text/html");
-                        //finish reading empty between header and body
-                        while((line=r.readLine()).length()!=0)
-                        {
-                            if(line.contains("Content-Transfer-Encoding:") && line.contains("base64"))
-                            {
-                                mail[i-1].setEncodingType("base64");
-                            }
-                        }
-                            while(!(line=r.readLine()).contains(mail[i-1].getContentBoundary()))
-                            {
-                                temp = temp+line+"\r\n";
-                                if(line.equals("."))
-                                {
-                                    break;
-                                }
-                            }
 
-                    }
-
-                  /*  else if(line.contains("Content-Type:")&&line.contains("text/plain"))
-                    {
-                        mail[i-1].setContentType("text/plain");
-                        while((line=r.readLine()).length()!=0)
-                        {
-                            if(line.contains("Content-Transfer-Encoding:") && line.contains("base64"))
-                            {
-                                mail[i-1].setEncodingType("base64");
-                            }
-                        }
-                        while (!(line=r.readLine()).equals("."))
-                        {
-                            temp = temp+line+"\r\n";
-                        }
-                    }
-                    if(line.equals("."))
-                    {
-                        break;
-                    }*/
-                }
-                if(mail[i-1].getEncodingType().contains("base64"))
-                {
-                    BASE64Decoder b64 = new BASE64Decoder();
-                    temp = new String(b64.decodeBuffer(temp));
-                }
-                mail[i-1].setContent(temp);
-            }
             //get email size
-    /*        w.write(CMD_LIST+"\r\n");
+            w.write(CMD_LIST+"\r\n");
             w.flush();
             int i = 0;
             while(!(line=r.readLine()).equals(".")&&!line.contains("ERR"))
@@ -259,8 +202,8 @@ public class SslPopClient{
                 }
             }
             //get email ID
-             w.write(CMD_UIDL+"\r\n");
-             w.flush();
+            w.write(CMD_UIDL+"\r\n");
+            w.flush();
             i=0;
             while(!(line=r.readLine()).equals(".")&&!line.contains("ERR"))
             {
@@ -275,7 +218,85 @@ public class SslPopClient{
                     mail[i].setEmailID(result);
                     i++;
                 }
-            }*/
+            }
+            //get content
+       //    for(i = 1; i <= emailNumber;i++)
+       //    {
+               i=6;
+                w.write(CMD_RETR+" "+i+"\r\n");
+                w.flush();
+                int numberOfBoundary = 0;
+                String temp = "";
+                // no attachment
+              if(mail[i-1].getContentType().contains("multipart/alternative"))
+              {
+                  while (!(line = r.readLine()).equals(".") && !line.contains("ERR"))
+                  {
+                      //if it is MIME
+                      if (line.contains("Content-Type:") && (line.contains("text/html")))
+                      {
+                          //finish reading empty between header and body
+                          while ((line = r.readLine()).length() != 0)
+                          {
+                              if (line.contains("Content-Transfer-Encoding:"))
+                              {
+                                  mail[i - 1].setEncodingType(line);
+                              }
+                          }
+                          while (!(line = r.readLine()).contains(mail[i - 1].getContentBoundary()))
+                          {
+                              if (line.contains(mail[i-1].getContentBoundary()))
+                              {
+                                  break;
+                              }
+                              temp = temp + line + "\r\n";
+                          }
+                      }
+                  }
+              }
+              else if(mail[i-1].getContentType().contains("text/plain"))
+              {
+                  while (!(line = r.readLine()).equals(".") && !line.contains("ERR"))
+                  {
+                      System.out.println(line);
+                      if (line.contains("Content-Type:") && (line.contains("text/plain")))
+                      {
+                          //finish reading empty between header and body
+                          while ((line = r.readLine()).length() != 0) {
+                              if (line.contains("Content-Transfer-Encoding:")) {
+                                  mail[i - 1].setEncodingType(line);
+                              }
+                          }
+                              while (!(line = r.readLine()).equals(".")) {
+                                  temp = temp + line + "\r\n";
+                                  System.out.println(line);
+                              }
+                          if (line.equals("."))
+                          {
+                              break;
+                          }
+                      }
+                  }
+              }
+              else while(!(line = r.readLine()).equals(".") && !line.contains("ERR"))
+              {
+                  //do nothing
+              }
+                if(mail[i-1].getEncodingType().contains("base64"))
+                {
+                    BASE64Decoder b64 = new BASE64Decoder();
+                    temp = new String(b64.decodeBuffer(temp));
+                }
+
+                else if(mail[i-1].getEncodingType().contains("quoted-printable"))
+                {
+                    temp = QpDecoding.qpDecoding(temp);
+                }
+                mail[i-1].setContent(temp);
+         //  }
+
+
+
             w.flush();
             r.close();
             w.close();
