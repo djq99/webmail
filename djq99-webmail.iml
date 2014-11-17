@@ -41,6 +41,8 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="mail" level="project" />
+    <orderEntry type="library" name="ST-4.0.8" level="project" />
   </component>
 </module>
 

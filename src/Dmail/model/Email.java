@@ -18,20 +18,6 @@ public class Email {
 
     private String title;
 
-    private String contentType;
-
-    private String contentBoundary;
-
-    private String encodingType;
-
-    public String getEncodingType() {
-        return encodingType;
-    }
-
-    public void setEncodingType(String encodingType) {
-        this.encodingType = encodingType;
-    }
-
     public boolean isNew() {
         return isNew;
     }
@@ -52,9 +38,9 @@ public class Email {
 
     private String mailDate;
 
-    private String personName;
 
-    private List<Attachment> attachments;
+    private boolean hasAttachment;
+
 
     private String userID;
 
@@ -113,10 +99,6 @@ public class Email {
         this.title = title;
     }
 
-    public String getToList()
-    {
-        return toList;
-    }
 
     public String getMailDate()
     {
@@ -128,24 +110,7 @@ public class Email {
         this.mailDate = mailDate;
     }
 
-    public String getPersonName()
-    {
-        return personName;
-    }
 
-    public void setPersonName(String personName)
-    {
-        this.personName = personName;
-    }
-
-    public List<Attachment> getAttachments()
-    {
-        return attachments;
-    }
-    public void setAttachments (List<Attachment> attachments)
-    {
-        this.attachments = attachments;
-    }
 
     public String getUserID()
     {
@@ -157,19 +122,12 @@ public class Email {
         this.userID = userID;
     }
 
-    public String getContentType() {
-        return contentType;
+
+    public boolean isHasAttachment() {
+        return hasAttachment;
     }
 
-    public void setContentType(String contentType) {
-        this.contentType = contentType;
-    }
-
-    public String getContentBoundary() {
-        return contentBoundary;
-    }
-
-    public void setContentBoundary(String contentBoundary) {
-        this.contentBoundary = contentBoundary;
+    public void setHasAttachment(boolean hasAttachment) {
+        this.hasAttachment = hasAttachment;
     }
 }

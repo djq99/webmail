@@ -5,95 +5,55 @@ package Dmail.dao;
  */
 import java.sql.*;
 import Dmail.model.User;
-public class UserDao extends CommonDao{
+public class UserDao  {
 
-    public boolean findUser(User user, Connection conn)
-    {
-        String sql = "select username,password from userinfo where username='"+user.getUsername()+"' and password='"+user.getPassword()+"'";
-        ResultSet rs = null;
-        try
-        {
-            rs = execSelect(sql, conn);
-            if (rs.next())
-            {
-                return true;
-            }
-        }
-        catch (SQLException e)
-        {
-            e.printStackTrace();
-        }
-        finally
-        {
-            close(null, rs);
-        }
-        return false;
+    public boolean findUser(User user, Connection conn) throws SQLException {
+        String sql = "select username,password from userinfo where username=? and password=?";
+        boolean rs = false;
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setString(1,user.getUsername());
+        pstmt.setString(2,user.getPassword());
+        rs = pstmt.execute();
+        return rs;
+
     }
-    public User returnUserInfo(String username, String password, Connection conn)
-    {
+    public User returnUserInfo(String username, String password, Connection conn) throws SQLException {
         ResultSet rs = null;
-        try
+        String sql = "select * from userinfo where username=? and password=?";
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setString(1,username);
+        pstmt.setString(2,password);
+        rs = pstmt.executeQuery();
+        User user = new User();
+        user.setUsername(rs.getString("username"));
+        user.setPassword(rs.getString("password"));
+        user.setEmailaddress(rs.getString("emailAddress"));
+        user.setEmailPassword(rs.getString("emailPassword"));
+        user.setUserid(rs.getInt("userId"));
+        if(rs.next())
         {
-            String sql = "select * from userinfo where username='"+username+"' and password='"+password+"'";
-            rs = execSelect(sql, conn);
-            User user = new User();
-            user.setUsername(rs.getString("username"));
-            user.setPassword(rs.getString("password"));
-            user.setEmailaddress(rs.getString("emailAddress"));
-            user.setEmailPassword(rs.getString("emailPassword"));
-            user.setUserid(rs.getInt("userId"));
-            if (rs.next())
-            {
-                return user;
-            }
-        }
-        catch (SQLException e)
-        {
-            e.printStackTrace();
-        }
-        finally
-        {
-            close(null, rs);
+            return user;
         }
         return null;
     }
-    public boolean createUser(User user, Connection conn)
-    {
-        String sql = "insert into [userinfo](username,password,emailAddress,emailPassword)values('"+user.getUsername()+"','"+user.getPassword()+"','"+user.getEmailaddress()+"','"+user.getEmailPassword()+"')";
-        int rs = -1;
-        try
-        {
-            rs = execUpdate(sql, conn);
-            if (rs!=-1)
-            {
-                return true;
-            }
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
-        return false;
+    public boolean createUser(User user, Connection conn) throws SQLException {
+        String sql = "insert into userinfo(username,password,emailAddress,emailPassword)values(?,?,?,?)";
+        boolean rs = false;
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setString(1,user.getUsername());
+        pstmt.setString(2,user.getPassword());
+        pstmt.setString(3,user.getEmailaddress());
+        pstmt.setString(4,user.getEmailPassword());
+        rs = pstmt.execute();
+        return rs;
     }
-    public int returnUserID(User user, Connection conn)
-    {
-        String sql = "select userId from userinfo where username='"+user.getUsername()+"' and password='"+user.getPassword()+"'";
+    public int returnUserID(User user, Connection conn) throws SQLException {
+        String sql = "select userId from userinfo where username=? and password=? ";
         ResultSet rs = null;
-        try
-        {
-            rs = execSelect(sql, conn);
-            if (rs.next())
-            {
-               rs.getInt(1);
-            }
-        }
-        catch (SQLException e) {
-            e.printStackTrace();
-        }
-        finally
-        {
-            close(null, rs);
-        }
-        return -1;
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setString(1,user.getUsername());
+        pstmt.setString(2,user.getPassword());
+        rs = pstmt.executeQuery();
+        return rs.getInt("userId");
     }
 }

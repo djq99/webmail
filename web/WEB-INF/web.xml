@@ -36,4 +36,12 @@
         <servlet-name>mail</servlet-name>
         <url-pattern>mail</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>viewmail</servlet-name>
+        <servlet-class>Dmail.Servlet.ViewMail</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>viewmail</servlet-name>
+        <url-pattern>viewmail</url-pattern>
+    </servlet-mapping>
 </web-app>

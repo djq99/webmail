@@ -1,12 +1,25 @@
 package Dmail.mail;
 
+import Dmail.Utils.QpDecoding;
 import Dmail.model.Email;
 import Dmail.model.User;
+import sun.misc.BASE64Decoder;
+
+import javax.mail.MessagingException;
+import javax.mail.Multipart;
+import javax.mail.Session;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeUtility;
+import javax.net.ssl.SSLSocket;
+import javax.net.ssl.SSLSocketFactory;
 import java.io.*;
 import java.net.UnknownHostException;
-import javax.net.ssl.*;
-import sun.misc.BASE64Decoder;
-import Dmail.Utils.QpDecoding;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Properties;
+
 public class SslPopClient{
 
     private static final String CMD_USER="USER";
@@ -121,6 +134,43 @@ public class SslPopClient{
         }
         return num;
     }
+    // get where email comes from
+    public String getFrom(MimeMessage msg) throws Exception {
+        InternetAddress address[] = (InternetAddress[]) msg.getFrom();
+        String from = address[0].getAddress();
+        if (from == null)
+            from = "";
+        String personal = address[0].getPersonal();
+        if (personal == null)
+            personal = "";
+        String fromaddr = personal + "<" + from + ">";
+        return fromaddr;
+    }
+    // get the subject of the email
+    public String getSubject(MimeMessage msg) throws MessagingException {
+        String subject = "";
+        try {
+            subject = MimeUtility.decodeText(msg.getSubject());
+            if (subject == null)
+                subject = "";
+        } catch (Exception e) {}
+        return subject;
+    }
+    //get the sentDate of the email
+    public String getSentDate(MimeMessage msg) throws Exception {
+        Date sentDate = msg.getSentDate();
+        SimpleDateFormat format = new SimpleDateFormat();
+        return format.format(sentDate);
+    }
+    //is mail contains attachment?
+    public boolean hasAttachment(MimeMessage msg)throws Exception{
+       String disposition = msg.getDisposition();
+         if(disposition == null)
+             return false;
+         else return true;
+    }
+
+
     public static Email[] returnEmail(User user, int emailNumber)
     {
         String popServer = user.getEmailaddress().substring(user.getEmailaddress().indexOf('@') + 1);
@@ -142,161 +192,49 @@ public class SslPopClient{
             line = r.readLine();
             w.write(CMD_PASS + " " + user.getEmailPassword() + "\r\n");
             w.flush();
-            line = r.readLine();
-            //get headers
-            for(int i = 1; i <= emailNumber;i++)
-            {
-                //request read ith email's header
-                mail[i-1] = new Email();
-                w.write(CMD_TOP+" "+i+" "+0+"\r\n");
-                w.flush();
-                while(!(line=r.readLine()).equals(".")&&!line.contains("ERR") )
-                {
-                    if(line.contains("Date: "))
-                    {
-                        String date = line.substring(line.indexOf(":") + 2);
-                        mail[i-1].setMailDate(date);
-                    }
-                    if(line.contains("Subject: "))
-                    {
-                        mail[i-1].setTitle(line.substring(line.indexOf(":") + 2));
-                    }
-                    if(line.contains("From: "))
-                    {
-                        mail[i-1].setFrom(line.substring(line.indexOf(":") + 2));
-                    }
-                    if(line.contains("To: "))
-                    {
-                        mail[i-1].setToList(line.substring(line.indexOf(":") + 2));
-                    }
-                    if(line.contains("Content-Type: "))
-                    {
-                        mail[i-1].setContentType(line.substring(line.indexOf(":") + 2,line.indexOf(";")));
-                    }
-                    if(line.contains("boundary="))
-                    {
-                       // System.out.println(line.substring(line.indexOf("boundary=")+12,line.length()-3));
-                        mail[i-1].setContentBoundary(line.substring(line.indexOf("boundary=")+12,line.length()-3));
-                    }
-                }
-                mail[i-1].setEncodingType("");
-            }
-
-            //get email size
-            w.write(CMD_LIST+"\r\n");
-            w.flush();
-            int i = 0;
-            while(!(line=r.readLine()).equals(".")&&!line.contains("ERR"))
-            {
-                if(line.contains("OK"))
-                {
-                    continue;
-                }
-                if(i < emailNumber)
-                {
-                    String arrays[] = line.split(" ");
-                    String result = arrays[1];
-                    int size = Integer.parseInt(result);
-                    mail[i].setSize(size);
-                    i++;
-                }
-            }
             //get email ID
             w.write(CMD_UIDL+"\r\n");
             w.flush();
-            i=0;
+            int i=1;
             while(!(line=r.readLine()).equals(".")&&!line.contains("ERR"))
             {
                 if(line.contains("OK"))
                 {
                     continue;
                 }
-                if(i < emailNumber)
+                mail[i-1] = new Email();
+                if(i <=emailNumber)
                 {
                     String arrays[] = line.split(" ");
                     String result = arrays[1];
-                    mail[i].setEmailID(result);
+                    mail[i-1].setEmailID(result);
                     i++;
                 }
             }
-            //get content
-       //    for(i = 1; i <= emailNumber;i++)
-       //    {
-               i=6;
-                w.write(CMD_RETR+" "+i+"\r\n");
+            //get header and content
+         for(i = 1; i <= emailNumber;i++)
+         {
+                w.write(CMD_RETR + " " + i + "\r\n");
                 w.flush();
-                int numberOfBoundary = 0;
-                String temp = "";
-                // no attachment
-              if(mail[i-1].getContentType().contains("multipart/alternative"))
-              {
-                  while (!(line = r.readLine()).equals(".") && !line.contains("ERR"))
-                  {
-                      //if it is MIME
-                      if (line.contains("Content-Type:") && (line.contains("text/html")))
-                      {
-                          //finish reading empty between header and body
-                          while ((line = r.readLine()).length() != 0)
-                          {
-                              if (line.contains("Content-Transfer-Encoding:"))
-                              {
-                                  mail[i - 1].setEncodingType(line);
-                              }
-                          }
-                          while (!(line = r.readLine()).contains(mail[i - 1].getContentBoundary()))
-                          {
-                              if (line.contains(mail[i-1].getContentBoundary()))
-                              {
-                                  break;
-                              }
-                              temp = temp + line + "\r\n";
-                          }
-                      }
-                  }
-              }
-              else if(mail[i-1].getContentType().contains("text/plain"))
-              {
-                  while (!(line = r.readLine()).equals(".") && !line.contains("ERR"))
-                  {
-                      System.out.println(line);
-                      if (line.contains("Content-Type:") && (line.contains("text/plain")))
-                      {
-                          //finish reading empty between header and body
-                          while ((line = r.readLine()).length() != 0) {
-                              if (line.contains("Content-Transfer-Encoding:")) {
-                                  mail[i - 1].setEncodingType(line);
-                              }
-                          }
-                              while (!(line = r.readLine()).equals(".")) {
-                                  temp = temp + line + "\r\n";
-                                  System.out.println(line);
-                              }
-                          if (line.equals("."))
-                          {
-                              break;
-                          }
-                      }
-                  }
-              }
-              else while(!(line = r.readLine()).equals(".") && !line.contains("ERR"))
-              {
-                  //do nothing
-              }
-                if(mail[i-1].getEncodingType().contains("base64"))
+                String content = "";
+            if(!(r.readLine().contains("ERR")))
+            {
+                while(!(line = r.readLine()).equals("."))
                 {
-                    BASE64Decoder b64 = new BASE64Decoder();
-                    temp = new String(b64.decodeBuffer(temp));
+                    content = content + line + "\r\n";
                 }
-
-                else if(mail[i-1].getEncodingType().contains("quoted-printable"))
-                {
-                    temp = QpDecoding.qpDecoding(temp);
-                }
-                mail[i-1].setContent(temp);
-         //  }
-
-
-
+            }
+            mail[i-1].setContent(content);
+            Properties properties = new Properties();
+            Session.getDefaultInstance(properties);
+            MimeMessage msg = new MimeMessage(Session.getDefaultInstance(properties),
+                    new ByteArrayInputStream(content.getBytes()));
+            SslPopClient ssl = new SslPopClient();
+            mail[i-1].setSize(msg.getSize());
+            mail[i-1].setMailDate(ssl.getSentDate(msg));
+            mail[i-1].setTitle(ssl.getSubject(msg));
+            mail[i-1].setFrom(ssl.getFrom(msg));
+         }
             w.flush();
             r.close();
             w.close();
@@ -305,7 +243,13 @@ public class SslPopClient{
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+
+
         return mail;
     }
 }

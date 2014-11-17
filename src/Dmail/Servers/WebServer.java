@@ -3,31 +3,100 @@ package Dmail.Servers;
  * Created by Jiaqi on 10/21/14.
  */
 import Dmail.Servlet.Register;
+import Dmail.misc.STListener;
+import org.eclipse.jetty.server.NCSARequestLog;
 import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.server.handler.RequestLogHandler;
+import org.eclipse.jetty.servlet.DefaultServlet;
+import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHandler;
+import org.eclipse.jetty.servlet.ServletHolder;
 import org.eclipse.jetty.webapp.WebAppContext;
 import org.eclipse.jetty.server.ssl.ServletSSL;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class WebServer {
+
+    public static final String WEBMAIL_TEMPLATES_ROOT = "resources/templates";
+
+    public static final STListener stListener = new STListener();
+
+
     public static void main(String[] args) throws Exception {
-        // Create a basic jetty server object that will listen on port 8080.  Note that if you set this to port 0
-        // then a randomly available port will be assigned that you can either look in the logs for the port,
-        // or programmatically obtain it for use in test cases.
+        if ( args.length<2 ) {
+            System.err.println("java Dmail.Server static-files-dir log-dir");
+            System.exit(1);
+        }
+        String staticFilesDir = args[0];
+        String logDir = args[1];
         Server server = new Server(8080);
 
-        // The ServletHandler is a dead simple way to create a context handler that is backed by an instance of a
-        // Servlet.  This handler then needs to be registered with the Server object.
+        ServletContextHandler context = new
+                ServletContextHandler(ServletContextHandler.SESSIONS);
+        context.setContextPath("/");
+        server.setHandler(context);
+
+        // add a simple Servlet at "/dynamic/*"
+
+
+        // add special pathspec of "/home/" content mapped to the homePath
+        ServletHolder holderHome = new ServletHolder("static-home", DefaultServlet.class);
+        holderHome.setInitParameter("resourceBase",staticFilesDir);
+        holderHome.setInitParameter("dirAllowed","true");
+        holderHome.setInitParameter("pathInfoOnly","true");
+        context.addServlet(holderHome, "/files/*");
+
+        // Lastly, the default servlet for root content (always needed, to satisfy servlet spec)
+        // It is important that this is last.
+        ServletHolder holderPwd = new ServletHolder("default", DefaultServlet.class);
+        holderPwd.setInitParameter("resourceBase","/tmp/foo");
+        holderPwd.setInitParameter("dirAllowed","true");
+        context.addServlet(holderPwd, "/");
+
+
+
+        WebAppContext webAppContext = new WebAppContext("web","/src");
+        webAppContext.setContextPath("/");
+        webAppContext.setResourceBase("web");
+        webAppContext.setClassLoader(Thread.currentThread().getContextClassLoader());
+        webAppContext.setConfigurationDiscovered(true);
+        webAppContext.setParentLoaderPriority(true);
+        server.setHandler(webAppContext);
+
+        // log using NCSA (common log format)
+        // http://en.wikipedia.org/wiki/Common_Log_Format
+        NCSARequestLog requestLog = new NCSARequestLog();
+        requestLog.setFilename(logDir + "/yyyy_mm_dd.request.log");
+        requestLog.setFilenameDateFormat("yyyy_MM_dd");
+        requestLog.setRetainDays(90);
+        requestLog.setAppend(true);
+        requestLog.setExtended(true);
+        requestLog.setLogCookies(false);
+        requestLog.setLogTimeZone("GMT");
+        RequestLogHandler requestLogHandler = new RequestLogHandler();
+        requestLogHandler.setRequestLog(requestLog);
+        requestLogHandler.setServer(server);
+
+        server.start();
+        server.join();
+    }
+
+
+
+
+
+    /*
+    public static void main(String[] args) throws Exception {
+
+        Server server = new Server(8080);
+
+
         ServletHandler handler = new ServletHandler();
         server.setHandler(handler);
 
-        // Passing in the class for the servlet allows jetty to instantite an instance of that servlet and mount it
-        // on a given context path.
 
-        // !! This is a raw Servlet, not a servlet that has been configured through a web.xml or anything like that !!
-      //  handler.addServletWithMapping(Register.class, "/register");
-
-        // Start things up! By using the server.join() the server thread will join with the current thread.
-        // See "http://docs.oracle.com/javase/1.5.0/docs/api/java/lang/Thread.html#join()" for more details.
 
         WebAppContext webAppContext = new WebAppContext("web","/src");
 
@@ -39,5 +108,5 @@ public class WebServer {
         server.setHandler(webAppContext);
         server.start();
         server.join();
-    }
+    }*/
 }
