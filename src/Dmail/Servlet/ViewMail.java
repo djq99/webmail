@@ -2,6 +2,7 @@ package Dmail.Servlet;
 
 import Dmail.Servers.WebServer;
 import Dmail.Utils.DbFactory;
+import Dmail.Utils.ParseEmail;
 import Dmail.dao.MailDao;
 import org.stringtemplate.v4.STGroup;
 import org.stringtemplate.v4.STGroupDir;
@@ -61,7 +62,20 @@ public class ViewMail extends HttpServlet {
 
             //decode the email content///////////////////////
             Properties properties = new Properties();
-            Session.getDefaultInstance(properties);
+            MimeMessage msg = null;
+            try {
+                msg = new MimeMessage(Session.getDefaultInstance(properties),
+                        new ByteArrayInputStream(content.getBytes()));
+                Object o = msg.getContent();
+                ParseEmail p = new ParseEmail();
+               String s =  p.getEmailContent(o);
+                out=response.getWriter();
+                out.print(s);
+            } catch (MessagingException e) {
+                e.printStackTrace();
+            }
+
+    /*        Session.getDefaultInstance(properties);
             try {
                 MimeMessage msg = new MimeMessage(Session.getDefaultInstance(properties),
                         new ByteArrayInputStream(content.getBytes()));
@@ -73,7 +87,6 @@ public class ViewMail extends HttpServlet {
                 }
                 else if(o instanceof Part)
                 {
-                    System.out.println("here");
                     Part part =(Part) o;
                     parsePart(part,response);
                 }
@@ -91,9 +104,10 @@ public class ViewMail extends HttpServlet {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
+*/
         }
     }
+    /*
     private void parseString(String str) throws Exception{
         emailContent = str;
     }
@@ -127,7 +141,7 @@ public class ViewMail extends HttpServlet {
             emailContent = (String)part.getContent();
         }
     }
-
+*/
 }
 
 
