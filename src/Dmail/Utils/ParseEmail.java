@@ -1,5 +1,6 @@
 package Dmail.Utils;
 
+import Dmail.model.User;
 import com.sun.mail.util.MimeUtil;
 
 import javax.mail.*;
@@ -15,6 +16,13 @@ import java.util.Properties;
  */
 public class ParseEmail {
     private StringBuffer sb = new StringBuffer();
+    User user;
+    boolean hasAttachment = false;
+
+    public ParseEmail(User user)
+    {
+        this.user = user;
+    }
 
 
     public String getEmailContent(Object o) throws MessagingException, IOException {
@@ -67,6 +75,23 @@ public class ParseEmail {
                 String header[] = part.getHeader("Content-ID");
                 if(header == null)
                 {
+                    //is an attachment not in the html
+                    if(part.getDisposition().equals(part.ATTACHMENT))
+                    {
+                        hasAttachment = true;
+                        String fileName = part.getFileName();
+                        fileName = MimeUtility.decodeText(fileName);
+                        InputStream is = part.getInputStream();
+                        String path = getFilePath(user);
+                        File dir = new File(path);
+                        File f = new File(dir,fileName);
+                        FileOutputStream fos = new FileOutputStream(f);
+                        byte[] buf = new byte[4096];
+                        int bytesRead;
+                        while((bytesRead = is.read(buf))!=-1) {
+                            fos.write(buf, 0, bytesRead);
+                        }
+                    }
 
                 }
                 else
@@ -78,14 +103,17 @@ public class ParseEmail {
                     String fileName = part.getFileName();
                     InputStream is = part.getInputStream();
                     fileName = MimeUtility.decodeText(fileName);
-                    File f = new File("./web/tmp",fileName);
+                    String path = getFilePath(user);
+                    File dir = new File(path);
+                    dir.mkdirs();
+                    File f = new File(dir,fileName);
                     FileOutputStream fos = new FileOutputStream(f);
                     byte[] buf = new byte[4096];
                     int bytesRead;
                     while((bytesRead = is.read(buf))!=-1) {
                         fos.write(buf, 0, bytesRead);
                     }
-                    imgPath = "tmp/"+fileName;
+                    imgPath = "userResource/"+user.getUserid()+"/"+fileName;
                     String s = sb.toString();
                     if(s.contains(cid))
                     {
@@ -96,6 +124,10 @@ public class ParseEmail {
             }
             return sb.toString();
         }
+    public boolean hasAttachment()
+    {
+        return hasAttachment;
+    }
 
 
     private static String getCid(Part p) throws MessagingException {
@@ -113,6 +145,12 @@ public class ParseEmail {
         }
         return cid;
 
+    }
+    private static String getFilePath(User user)
+    {
+        String path = String.valueOf(user.getUserid());
+        path = "./web/userResource/"+path;
+        return path;
     }
 }
 

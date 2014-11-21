@@ -1,4 +1,4 @@
-mailPage(mails) ::= <<
+viewMail() ::= <<
 <!doctype html>
 
 <head>
@@ -106,28 +106,7 @@ mailPage(mails) ::= <<
                     <!-- /.modal-dialog -->
                 </div>
                 <!-- /.modal -->
-                <div>
-                <h1>INBOX</h1>
-                </div>
-                <div>
-                <table class="table table-hover">
-                    <thead>
-                    <tr>
-                        <th><input type="checkbox"></th>
-                        <th>From</th>
-                        <th>Subject</th>
-                        <th>Date</th>
-                        <th>Size</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    $mails:{m|
-                    <tr style="cursor: pointer" onclick="javascript:window.location.href='viewmail?mailinfo=$m.emailID$'">
-                        <td><input type="checkbox"></td><td>$m.from$</td><td>$m.title$</td><td>$m.mailDate$</td><td>$m.size$</td>
-                        }$
-                    </tbody>
-                </table>
-                </div>
+               alsdjflkasjdflkasf
             </div>
         </div>
     </div>
