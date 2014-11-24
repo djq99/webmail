@@ -1,21 +1,20 @@
 package Dmail.mail;
 
-import Dmail.Utils.QpDecoding;
+import Dmail.Utils.DbFactory;
+import Dmail.dao.MailDao;
 import Dmail.model.Email;
 import Dmail.model.User;
-import sun.misc.BASE64Decoder;
 
 import javax.mail.MessagingException;
-import javax.mail.Multipart;
 import javax.mail.Session;
 import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeUtility;
 import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
 import java.io.*;
 import java.net.UnknownHostException;
+import java.sql.Connection;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
@@ -91,6 +90,8 @@ public class SslPopClient{
         user.setEmailPassword("djq199031415926");
         int number = returnEmailNumber(user);
         Email[] mailHeaders=returnEmail(user,number);
+        System.out.println(mailHeaders[18].getContent());
+        System.out.println(mailHeaders[18].getTitle());
 
 
     }
@@ -163,7 +164,7 @@ public class SslPopClient{
         return format.format(sentDate);
     }
     //is mail contains attachment?
-    public boolean hasAttachment(MimeMessage msg)throws Exception{
+    public static boolean hasAttachment(MimeMessage msg)throws Exception{
        String disposition = msg.getDisposition();
          if(disposition == null)
              return false;
@@ -226,7 +227,7 @@ public class SslPopClient{
             }
             mail[i-1].setContent(content);
             Properties properties = new Properties();
-            Session.getDefaultInstance(properties);
+            //Session.getDefaultInstance(properties);
             MimeMessage msg = new MimeMessage(Session.getDefaultInstance(properties),
                     new ByteArrayInputStream(content.getBytes()));
             SslPopClient ssl = new SslPopClient();
@@ -234,7 +235,28 @@ public class SslPopClient{
             mail[i-1].setMailDate(ssl.getSentDate(msg));
             mail[i-1].setTitle(ssl.getSubject(msg));
             mail[i-1].setFrom(ssl.getFrom(msg));
+
+            if(hasAttachment(msg) == true)
+            {
+                mail[i-1].setHasAttachment(true);
+            }
+             else
+            {
+                mail[i-1].setHasAttachment(false);
+            }
+             MailDao mailDao = new MailDao();
+             Connection conn = DbFactory.getConnection();
+             mailDao.createMail(mail[i-1],user,conn);
+             DbFactory.closeConn(conn);
          }
+         for(i =1; i<= emailNumber;i++)
+         {
+             w.write(CMD_DELE+" "+ i +"\r\n");
+             w.flush();
+             r.readLine();
+         }
+         w.write(CMD_QUIT + "\r\n");
+            w.flush();
             w.flush();
             r.close();
             w.close();

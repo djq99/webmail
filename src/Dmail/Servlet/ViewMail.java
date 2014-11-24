@@ -4,6 +4,7 @@ import Dmail.Servers.WebServer;
 import Dmail.Utils.DbFactory;
 import Dmail.Utils.ParseEmail;
 import Dmail.dao.MailDao;
+import Dmail.model.Email;
 import Dmail.model.User;
 import org.stringtemplate.v4.ST;
 import org.stringtemplate.v4.STGroup;
@@ -18,10 +19,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.PrintWriter;
+import java.io.*;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Properties;
@@ -45,7 +43,8 @@ public class ViewMail extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession(false);
-        if (session == null) {
+        Email email = new Email();
+        if (session == null || session.getAttribute("userinfo")==null) {
             response.sendRedirect("login");
         } else {
            String mailId = request.getParameter("mailinfo");
@@ -54,6 +53,7 @@ public class ViewMail extends HttpServlet {
             Connection conn = DbFactory.getConnection();
             try {
                 content = mailDao.returnMailContent(mailId,conn);
+                email = mailDao.returnOneMailHeader(mailId,conn);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -75,10 +75,13 @@ public class ViewMail extends HttpServlet {
                 String s =  p.getEmailContent(o);
 
                 ST mailST = templates.getInstanceOf("viewMail");
-              //  mailST.add("mails",mail);
+                String n = new String(s.getBytes(),"ISO-8859-1");
+                mailST.add("content",n);
+                mailST.add("header",email);
                 String viewMail = mailST.render();
                 out = response.getWriter();
-                out.print(s);
+                out.print(viewMail);
+
             } catch (MessagingException e) {
                 e.printStackTrace();
             }

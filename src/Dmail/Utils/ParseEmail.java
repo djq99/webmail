@@ -18,6 +18,7 @@ public class ParseEmail {
     private StringBuffer sb = new StringBuffer();
     User user;
     boolean hasAttachment = false;
+    boolean hasText = false;
 
     public ParseEmail(User user)
     {
@@ -58,17 +59,31 @@ public class ParseEmail {
           {
               result = parseContent(part);
           }
+
       }
         return result;
     }
 
         public String parseContent(Part part) throws MessagingException, IOException {
-
             sb.append(new String(""));
+            if(part.getContentType().startsWith("text/plain"))
+            {
+                hasText = true;
+                String s = (String) part.getContent();
+                sb.append(s);
+            }
             if(part.getContentType().startsWith("text/html"))
             {
                 String s = (String) part.getContent();
-                sb.append(s);
+                if(hasText == true)
+                {
+                    sb.delete(0,sb.length());
+                    sb.append(s);
+                }
+                else
+                {
+                    sb.append(s);
+                }
             }
             else if(part.getDisposition()!=null)
             {

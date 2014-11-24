@@ -31,7 +31,7 @@ public class WebServer {
         }
         String staticFilesDir = args[0];
         String logDir = args[1];
-        Server server = new Server(8080);
+        Server server = new Server(8081);
 
         ServletContextHandler context = new
                 ServletContextHandler(ServletContextHandler.SESSIONS);

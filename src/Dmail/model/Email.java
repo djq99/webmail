@@ -12,7 +12,11 @@ public class Email {
 
     private int size;
 
-    private String toList;
+    private String sendTo;
+
+    private String sendCC;
+
+    private String sendBcc;
 
     private String from;
 
@@ -38,9 +42,11 @@ public class Email {
 
     private String mailDate;
 
-
     private boolean hasAttachment;
 
+    private String attachmentPath;
+
+    private String attachmentName;
 
     private String userID;
 
@@ -74,10 +80,6 @@ public class Email {
         this.size = size;
     }
 
-    public void setToList(String toList)
-    {
-        this.toList = toList;
-    }
 
     public String getFrom()
     {
@@ -129,5 +131,45 @@ public class Email {
 
     public void setHasAttachment(boolean hasAttachment) {
         this.hasAttachment = hasAttachment;
+    }
+
+    public String getSendTo() {
+        return sendTo;
+    }
+
+    public void setSendTo(String sendTo) {
+        this.sendTo = sendTo;
+    }
+
+    public String getSendCC() {
+        return sendCC;
+    }
+
+    public void setSendCC(String sendCC) {
+        this.sendCC = sendCC;
+    }
+
+    public String getSendBcc() {
+        return sendBcc;
+    }
+
+    public void setSendBcc(String sendBcc) {
+        this.sendBcc = sendBcc;
+    }
+
+    public String getAttachmentPath() {
+        return attachmentPath;
+    }
+
+    public void setAttachmentPath(String attachmentPath) {
+        this.attachmentPath = attachmentPath;
+    }
+
+    public String getAttachmentName() {
+        return attachmentName;
+    }
+
+    public void setAttachmentName(String attachmentName) {
+        this.attachmentName = attachmentName;
     }
 }

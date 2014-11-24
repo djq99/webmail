@@ -44,4 +44,28 @@
         <servlet-name>viewmail</servlet-name>
         <url-pattern>viewmail</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>sendmail</servlet-name>
+        <servlet-class>Dmail.Servlet.SendMail</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>sendmail</servlet-name>
+        <url-pattern>sendmail</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>attachment</servlet-name>
+        <servlet-class>Dmail.Servlet.AttachmentUploader</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>attachment</servlet-name>
+        <url-pattern>attachment</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>logout</servlet-name>
+        <servlet-class>Dmail.Servlet.Logout</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>logout</servlet-name>
+        <url-pattern>logout</url-pattern>
+    </servlet-mapping>
 </web-app>
