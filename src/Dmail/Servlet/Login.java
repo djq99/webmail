@@ -77,7 +77,6 @@ public class Login extends HttpServlet {
         try {
             if(userDao.findUser(user,conn))
             {
-                System.out.println("登录成功");
                 user = userDao.returnUserInfo(user.getUsername(),user.getPassword(),conn);
                 HttpSession session = request.getSession();
                 session.setAttribute("userinfo",user);

@@ -80,7 +80,7 @@ public class SslSmtpClient {
             {
                 message.setRecipient(Message.RecipientType.TO, new InternetAddress(email.getSendTo()));
             }
-            if(email.getSendCC()!="")
+            if(email.getSendCC()!="" && email.getSendCC()!=null)
             {
                 message.setRecipient(Message.RecipientType.CC, new InternetAddress(email.getSendCC()));
             }
@@ -110,14 +110,17 @@ public class SslSmtpClient {
                 allMultipart.addBodyPart(attachFileBodypart);
                 message.setContent(allMultipart);
                 message.saveChanges();
-
+                message.writeTo(c.getOutputStream());
 
             }
-           message.writeTo(c.getOutputStream());
+            else
+            {
+                w.write(email.getContent()+"\r\n"+"."+"\r\n");
+                    w.flush();
+                line = r.readLine();
+            }
 
-            w.write("."+"\r\n");
-          // w.flush();
-            line = r.readLine();
+
 
             w.write("QUIT\r\n");
             w.flush();
@@ -132,6 +135,62 @@ public class SslSmtpClient {
             e.printStackTrace();
         }
     }
+    public static void forwardEMail(User user, Email email) {
+        SSLSocketFactory f = (SSLSocketFactory) SSLSocketFactory.getDefault();
+        String smtpServer = user.getEmailaddress().substring(user.getEmailaddress().indexOf('@') + 1);
+        smtpServer = "pop." + smtpServer;
+        try {
+            SSLSocket c = (SSLSocket) f.createSocket(smtpServer, sslPort);
+            c.startHandshake();
+            BufferedWriter w = new BufferedWriter(
+                    new OutputStreamWriter(c.getOutputStream()));
+            BufferedReader r = new BufferedReader(
+                    new InputStreamReader(c.getInputStream()));
+
+            w.write("EHLO smtp.gmail.com" + "\r\n");
+            w.flush();
+            String line = r.readLine();
+            w.write("AUTH LOGIN" + "\r\n");
+            w.flush();
+            line = r.readLine();
+            String emailAddress = user.getEmailaddress();
+            emailAddress = Base64Coder.encode(emailAddress);
+            w.write(emailAddress + "\r\n");
+            w.flush();
+            line = r.readLine();
+            String emailPassword = user.getEmailPassword();
+            emailPassword = Base64Coder.encode(emailPassword);
+            w.write(emailPassword + "\r\n");
+            w.flush();
+            line = r.readLine();
+            w.write("MAIL FROM:<" + user.getEmailaddress() + ">\r\n");
+            w.flush();
+            for (int i = 1; i <= 7; i++) {
+                line = r.readLine();
+            }
+            w.write("RCPT TO:<" + email.getSendTo() + ">\r\n");
+            w.flush();
+            line = r.readLine();
+
+            w.write("DATA\r\n");
+            w.flush();
+            line = r.readLine();
+
+
+            w.write(email.getContent()+"\r\n" + "." + "\r\n");
+            //    w.flush();
+            line = r.readLine();
+
+            w.write("QUIT\r\n");
+            w.flush();
+
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
         User user = new User();
         user.setEmailaddress("imdjq1990@gmail.com");

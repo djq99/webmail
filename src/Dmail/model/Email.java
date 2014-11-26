@@ -8,7 +8,7 @@ public class Email {
 
     private String emailID;
 
-    private boolean isNew;
+    private String isNew;
 
     private int size;
 
@@ -21,14 +21,6 @@ public class Email {
     private String from;
 
     private String title;
-
-    public boolean isNew() {
-        return isNew;
-    }
-
-    public void setNew(boolean isNew) {
-        this.isNew = isNew;
-    }
 
     public String getContent() {
         return content;
@@ -60,12 +52,12 @@ public class Email {
         this.emailID = emailID;
     }
 
-    public boolean getIsNew()
+    public String getIsNew()
     {
         return isNew;
     }
 
-    public void setIsNew(boolean isNew)
+    public void setIsNew(String isNew)
     {
         this.isNew =isNew;
     }

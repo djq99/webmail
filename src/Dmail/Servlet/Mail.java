@@ -6,6 +6,7 @@ import Dmail.dao.MailDao;
 import Dmail.mail.SslPopClient;
 import Dmail.model.Email;
 import Dmail.model.User;
+import net.sf.json.JSONArray;
 import org.stringtemplate.v4.ST;
 import org.stringtemplate.v4.STGroup;
 import org.stringtemplate.v4.STGroupDir;
@@ -41,11 +42,9 @@ public class Mail extends HttpServlet {
 
         HttpSession session = request.getSession(false);
         if(session == null||session.getAttribute("userinfo") ==null) {
-            response.sendRedirect("login");
+           response.sendRedirect("login");
         } else {
             User user = (User) session.getAttribute("userinfo");
-            int emailNumber = SslPopClient.returnEmailNumber(user);
-            SslPopClient.returnEmail(user, emailNumber);
             Connection conn = DbFactory.getConnection();
             MailDao mailDao = new MailDao();
             ArrayList<Email> mail;
@@ -53,7 +52,8 @@ public class Mail extends HttpServlet {
             try {
                 mail = mailDao.returnMailHeader(user.getUserid(),conn);
                 ST mailST = templates.getInstanceOf("mailPage");
-                mailST.add("mails",mail);
+              //  mailST.add("mails",mail);
+                JSONArray jsonArray = JSONArray.fromObject(mail);
                 String mailPage = mailST.render();
                 out = response.getWriter();
                 out.print(mailPage);

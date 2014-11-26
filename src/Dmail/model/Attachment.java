@@ -6,30 +6,23 @@ package Dmail.model;
 public class Attachment
 {
 
-    private int emailID;
+   private String attachmentName;
 
-    private String attName;
+   private String attachmentPath;
 
-
-    public int getEmailID()
-    {
-        return emailID;
+    public String getAttachmentName() {
+        return attachmentName;
     }
 
-    public void setEmailID(int mpid)
-    {
-        this.emailID = mpid;
+    public void setAttachmentName(String attachmentName) {
+        this.attachmentName = attachmentName;
     }
 
-    public String getattName()
-    {
-        return attName;
+    public String getAttachmentPath() {
+        return attachmentPath;
     }
 
-    public void setAttName(String attName)
-    {
-        this.attName = attName;
+    public void setAttachmentPath(String attachmentPath) {
+        this.attachmentPath = attachmentPath;
     }
-
-
 }

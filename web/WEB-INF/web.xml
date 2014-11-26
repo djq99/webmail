@@ -37,6 +37,22 @@
         <url-pattern>mail</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>checkmail</servlet-name>
+        <servlet-class>Dmail.Servlet.CheckEmail</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>checkmail</servlet-name>
+        <url-pattern>checkmail</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>maillist</servlet-name>
+        <servlet-class>Dmail.Servlet.MailList</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>maillist</servlet-name>
+        <url-pattern>maillist</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>viewmail</servlet-name>
         <servlet-class>Dmail.Servlet.ViewMail</servlet-class>
     </servlet>

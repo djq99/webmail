@@ -147,6 +147,7 @@ public class SslPopClient{
         String fromaddr = personal + "<" + from + ">";
         return fromaddr;
     }
+
     // get the subject of the email
     public String getSubject(MimeMessage msg) throws MessagingException {
         String subject = "";
@@ -165,10 +166,10 @@ public class SslPopClient{
     }
     //is mail contains attachment?
     public static boolean hasAttachment(MimeMessage msg)throws Exception{
-       String disposition = msg.getDisposition();
-         if(disposition == null)
-             return false;
-         else return true;
+       String contentType = msg.getContentType();
+         if(contentType.contains("multipart/related")||contentType.contains("multipart/mixed"))
+             return true;
+         else return false;
     }
 
 
@@ -235,6 +236,7 @@ public class SslPopClient{
             mail[i-1].setMailDate(ssl.getSentDate(msg));
             mail[i-1].setTitle(ssl.getSubject(msg));
             mail[i-1].setFrom(ssl.getFrom(msg));
+
 
             if(hasAttachment(msg) == true)
             {

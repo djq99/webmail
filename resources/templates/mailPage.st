@@ -8,11 +8,14 @@ mailPage(mails) ::= <<
     <link href="bootstrap-3.2.0-dist/css/dashboard.css" rel="stylesheet">
     <script src="bootstrap-3.2.0-dist/js/jquery-1.11.1.js"></script>
     <script src="bootstrap-3.2.0-dist/js/bootstrap.js"></script>
-     <script src="bootstrap-3.2.0-dist/js/jquery.form.js"></script>
-
 </head>
 
 <body>
+ <script type='text/javascript' src="bootstrap-3.2.0-dist/js/jquery-1.4.4.min.js"></script>
+   <script src="bootstrap-3.2.0-dist/js/jquery.form.js"></script>
+     <script src="bootstrap-3.2.0-dist/js/maillist.js"></script>
+      <script src="bootstrap-3.2.0-dist/js/ajaxUpload.js"></script>
+           <script src="bootstrap-3.2.0-dist/js/checkmail.js"></script>
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -34,11 +37,10 @@ mailPage(mails) ::= <<
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <li><a href="mail">check mail</a></li>
+                <li><a href="#" id = "checkmail">check mail</a></li>
                 <li><a href="mail">Inbox <span class="badge" id ="mailNumbers"></span></a></li>
                  <li><a href="#">Outbox</a></li>
                 <li><a herf="#edit" style="cursor: pointer" data-toggle="modal" data-target="#edit">Compose</a></li>
-                <li><a href="#">Trash</a></li>
             </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -62,20 +64,6 @@ mailPage(mails) ::= <<
                                                                     <h4> <span class="label label-info">Next step: upload the file</span></h4>
                                                                         <input type="submit" id="upload-button" value="upload">
                                                                 </form>
-
-                                                                <script>
-                                                                    jQuery(function() {
-                                                                    var options={
-                                                                    success: showResponse
-                                                                    }
-                                                                        jQuery('#upload-form').ajaxForm(options);
-                                                                    });
-                                                                    function showResponse(responseText, statusText)  {
-
-                                                                        alert(responseText);
-                                                                    }
-                                                                </script>
-
                                                                 </div>
 
                             <form action="sendmail" method="post">
@@ -125,50 +113,14 @@ mailPage(mails) ::= <<
                                                                             <li><a href="#">Mark as read</a></li>
                                                                             <li><a href="#">Mark as unread</a></li>
                                                                             <li class="divider"></li>
-                                                                            <li><a href="#" id ="trash">Move to trash</a></li>
+                                                                            <li><a href="#" id ="delete">delete</a></li>
                                                                             <li class="divider"></li>
 
                                                                         </ul>
                                                                     </div>
 
                                                                 </div>
-                <div>
-                <table class="table table-hover">
-                    <thead>
-                    <tr>
-                        <th><input type="checkbox" name="all" id ="SelectAll" ></th>
-                        <th>From</th>
-                        <th>Subject</th>
-                        <th>Date</th>
-                        <th>Size</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    $mails:{m|
-                    <tr style="cursor: pointer" >
-                        <td><input type="checkbox" name ="child"></td><td onclick="javascript:window.location.href='viewmail?mailinfo=$m.emailID$'">$m.from$</td><td onclick="javascript:window.location.href='viewmail?mailinfo=$m.emailID$'">$m.title$</td><td onclick="javascript:window.location.href='viewmail?mailinfo=$m.emailID$'">$m.mailDate$</td><td onclick="javascript:window.location.href='viewmail?mailinfo=$m.emailID$'">$m.size$</td>
-                        }$
-                       <script src="bootstrap-3.2.0-dist/js/jquery-1.4.4.min.js" type="text/javascript"></script>    <script type="text/javascript">
-                          \$(function(){
-                                     \$(':checkbox[name=all]').click(function(){
-                                         if(this.checked){
-                                             \$(':checkbox').attr('checked','checked');
-                                         }else{
-                                             \$(':checkbox').removeAttr('checked');
-                                         }
-                                     })
-                                     \$('#trash').click(function(){
-                                         \$(':checkbox[name=child]').each(function(){
-                                             if(\$(this).attr('checked')){
-                                                 \$(this).closest('tr').remove();
-
-                                             }
-                                         })
-                                     })
-                                 })
-                       </script>
-                    </tbody>
-                </table>
+                <div id = "maillist">
                 </div>
             </div>
         </div>

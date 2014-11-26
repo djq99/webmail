@@ -38,6 +38,7 @@ public class SendMail  extends HttpServlet {
         if(session.getAttribute("email")!=null)
         {
             email = (Email) session.getAttribute("email");
+            session.removeAttribute("email");
         }
         email.setSendTo(request.getParameter("email_to"));
         email.setSendCC(request.getParameter("email_cc"));
