@@ -16,6 +16,8 @@ mailPage(mails) ::= <<
      <script src="bootstrap-3.2.0-dist/js/maillist.js"></script>
       <script src="bootstrap-3.2.0-dist/js/ajaxUpload.js"></script>
            <script src="bootstrap-3.2.0-dist/js/checkmail.js"></script>
+            <script src="bootstrap-3.2.0-dist/js/sort.js"></script>
+
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -23,13 +25,9 @@ mailPage(mails) ::= <<
             <a class="navbar-brand" href="#">Dmail</a> </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Search</a></li>
                 <li><a href="#">Account</a></li>
                 <li><a href="logout">Log out</a></li>
             </ul>
-            <form class="navbar-form navbar-right">
-                <input type="text" class="form-control" placeholder="Search...">
-            </form>
         </div>
     </div>
 </div>
@@ -105,21 +103,38 @@ mailPage(mails) ::= <<
                 <div>
                 <h1>INBOX</h1>
                 </div>
+                <div class="row">
+                  <div class="col-md-1">
                  <div class="btn-group">
-                                                                        <button type="button" class="btn btn-default btn-sm btn-flat dropdown-toggle" data-toggle="dropdown">
-                                                                            Action <span class="caret"></span>
-                                                                        </button>
-                                                                        <ul class="dropdown-menu" role="menu">
-                                                                            <li><a href="#">Mark as read</a></li>
-                                                                            <li><a href="#">Mark as unread</a></li>
-                                                                            <li class="divider"></li>
-                                                                            <li><a href="#" id ="delete">delete</a></li>
-                                                                            <li class="divider"></li>
+                 <button type="button" class="btn btn-default btn-sm btn-flat dropdown-toggle" data-toggle="dropdown">
+                   Action <span class="caret"></span>
+                   </button>
+                   <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Mark as read</a></li>
+                    <li><a href="#">Mark as unread</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#" id ="delete">delete</a></li>
+                    <li class="divider"></li>
 
-                                                                        </ul>
-                                                                    </div>
+                    </ul>
+                     </div>
+                     </div>
+                       <div class="col-md-1">
+                                      <div class="btn-group">
+                                      <button type="button" class="btn btn-default btn-sm btn-flat dropdown-toggle" data-toggle="dropdown">
+                                        Sort by <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu">
+                                         <li><a href="#" id="sortfrom">From</a></li>
+                                         <li><a href="#" id= "sortsubject">Subject</a></li>
+                                         <li><a href="#" id= "sortdate">Date</a></li>
+                                         <li><a href="#" id= "sortsize">Size</a></li>
 
-                                                                </div>
+                                         </ul>
+                                          </div>
+                                          </div>
+
+                   </div>
                 <div id = "maillist">
                 </div>
             </div>

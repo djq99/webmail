@@ -6,6 +6,7 @@ import Dmail.Servlet.Register;
 import Dmail.misc.STListener;
 import org.eclipse.jetty.server.NCSARequestLog;
 import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.server.handler.HandlerCollection;
 import org.eclipse.jetty.server.handler.RequestLogHandler;
 import org.eclipse.jetty.servlet.DefaultServlet;
 import org.eclipse.jetty.servlet.ServletContextHandler;
@@ -35,8 +36,10 @@ public class WebServer {
 
         ServletContextHandler context = new
                 ServletContextHandler(ServletContextHandler.SESSIONS);
+        HandlerCollection hc = new HandlerCollection();
         context.setContextPath("/");
         server.setHandler(context);
+
 
         // add a simple Servlet at "/dynamic/*"
 

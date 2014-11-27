@@ -23,13 +23,9 @@ viewMail(header,content,attachment,newNum) ::= <<
             <a class="navbar-brand" href="#">Dmail</a> </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Search</a></li>
                 <li><a href="#">Account</a></li>
                 <li><a href="logout">Log out</a></li>
             </ul>
-            <form class="navbar-form navbar-right">
-                <input type="text" class="form-control" placeholder="Search...">
-            </form>
         </div>
     </div>
 </div>

@@ -124,4 +124,90 @@ public class MailDao {
         pstmt.setString(1, mailId);
         pstmt.execute();
     }
+
+    public ArrayList<Email> returnSortByFrom(int userId, Connection conn) throws SQLException {
+        String sql="select isNew,mailId,receiveFrom,title,mailDate,mailSize,attachments from mail where userId = ? order by receiveFrom";
+        ResultSet rs;
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setInt(1,userId);
+        rs = pstmt.executeQuery();
+        ArrayList<Email> mail = new ArrayList<Email>();
+        while(rs.next())
+        {
+            Email e = new Email();
+            e.setIsNew(rs.getString("isNew"));
+            e.setFrom(rs.getString("receiveFrom"));
+            e.setTitle(rs.getString("title"));
+            e.setSize(rs.getInt("mailSize"));
+            e.setMailDate(rs.getString("mailDate"));
+            e.setEmailID(rs.getString("mailId"));
+            e.setHasAttachment(rs.getBoolean("attachments"));
+            mail.add(e);
+        }
+        return mail;
+    }
+
+    public ArrayList<Email> returnSortBySubject(int userId, Connection conn) throws SQLException {
+        String sql="select isNew,mailId,receiveFrom,title,mailDate,mailSize,attachments from mail where userId = ? order by title";
+        ResultSet rs;
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setInt(1,userId);
+        rs = pstmt.executeQuery();
+        ArrayList<Email> mail = new ArrayList<Email>();
+        while(rs.next())
+        {
+            Email e = new Email();
+            e.setIsNew(rs.getString("isNew"));
+            e.setFrom(rs.getString("receiveFrom"));
+            e.setTitle(rs.getString("title"));
+            e.setSize(rs.getInt("mailSize"));
+            e.setMailDate(rs.getString("mailDate"));
+            e.setEmailID(rs.getString("mailId"));
+            e.setHasAttachment(rs.getBoolean("attachments"));
+            mail.add(e);
+        }
+        return mail;
+    }
+    public ArrayList<Email> returnSortByDate(int userId, Connection conn) throws SQLException {
+        String sql="select isNew,mailId,receiveFrom,title,mailDate,mailSize,attachments from mail where userId = ? order by mailDate";
+        ResultSet rs;
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setInt(1,userId);
+        rs = pstmt.executeQuery();
+        ArrayList<Email> mail = new ArrayList<Email>();
+        while(rs.next())
+        {
+            Email e = new Email();
+            e.setIsNew(rs.getString("isNew"));
+            e.setFrom(rs.getString("receiveFrom"));
+            e.setTitle(rs.getString("title"));
+            e.setSize(rs.getInt("mailSize"));
+            e.setMailDate(rs.getString("mailDate"));
+            e.setEmailID(rs.getString("mailId"));
+            e.setHasAttachment(rs.getBoolean("attachments"));
+            mail.add(e);
+        }
+        return mail;
+    }
+    public ArrayList<Email> returnSortBySize(int userId, Connection conn) throws SQLException {
+        String sql="select isNew,mailId,receiveFrom,title,mailDate,mailSize,attachments from mail where userId = ? order by mailSize";
+        ResultSet rs;
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setInt(1,userId);
+        rs = pstmt.executeQuery();
+        ArrayList<Email> mail = new ArrayList<Email>();
+        while(rs.next())
+        {
+            Email e = new Email();
+            e.setIsNew(rs.getString("isNew"));
+            e.setFrom(rs.getString("receiveFrom"));
+            e.setTitle(rs.getString("title"));
+            e.setSize(rs.getInt("mailSize"));
+            e.setMailDate(rs.getString("mailDate"));
+            e.setEmailID(rs.getString("mailId"));
+            e.setHasAttachment(rs.getBoolean("attachments"));
+            mail.add(e);
+        }
+        return mail;
+    }
 }

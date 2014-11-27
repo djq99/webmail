@@ -29,20 +29,22 @@ public class MailList extends HttpServlet {
         if(session == null||session.getAttribute("userinfo") ==null) {
             response.sendRedirect("login");
         }
-        else
-        {
-            User user = (User) session.getAttribute("userinfo");
-            Connection conn = DbFactory.getConnection();
-            MailDao mailDao = new MailDao();
-            ArrayList<Email> mail;
-            try {
-                mail = mailDao.returnMailHeader(user.getUserid(),conn);
-                JSONArray jsonArray = JSONArray.fromObject(mail);
-               // System.out.println(jsonArray);
-                out = response.getWriter();
-                out.print(jsonArray);
-            } catch (SQLException e) {
-                e.printStackTrace();
+        else {
+            if (request.getParameter("req").equals("maillist")) {
+                User user = (User) session.getAttribute("userinfo");
+
+                Connection conn = DbFactory.getConnection();
+                MailDao mailDao = new MailDao();
+                ArrayList<Email> mail;
+                try {
+                    int userId = user.getUserid();
+                    mail = mailDao.returnMailHeader(userId, conn);
+                    JSONArray jsonArray = JSONArray.fromObject(mail);
+                    out = response.getWriter();
+                    out.print(jsonArray);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }

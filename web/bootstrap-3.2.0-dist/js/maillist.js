@@ -2,7 +2,7 @@ $(document).ready(
     function(){
         // get mail list after login
         var url = "maillist";
-        $.getJSON(url, {}, function(data){
+        $.getJSON(url, {req: "maillist"}, function(data){
             var len = data.length;
             var table ="<table class=\"table table-hover\">";
             var newNumber = 0;
@@ -14,7 +14,7 @@ $(document).ready(
             {
                 table = table + "<thead><tr> <th><input type=\"checkbox\" name=\"all\" id =\"SelectAll\" ></th><th></th><th>From</th><th>Subject</th><th>Date</th><th>Size</th></tr></thead><tbody>";
 
-                for (var i = len-1; i > 0; i--)
+                for (var i = len-1; i >= 0; i--)
                 {
                     table = table +"<tr id ="+data[i].emailID+" style=\"cursor: pointer\">";
                     table = table + "<td><input type=\"checkbox\" name =\"child\"></td>";
