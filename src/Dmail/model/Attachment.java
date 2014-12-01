@@ -3,12 +3,11 @@ package Dmail.model;
 /**
  * Created by jiaqi on 10/26/14.
  */
-public class Attachment
-{
+public class Attachment {
 
-   private String attachmentName;
+    private String attachmentName;
 
-   private String attachmentPath;
+    private String attachmentPath;
 
     public String getAttachmentName() {
         return attachmentName;

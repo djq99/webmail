@@ -31,48 +31,61 @@ public class Sort extends HttpServlet {
             MailDao mailDao = new MailDao();
             ArrayList<Email> mail;
             if (request.getParameter("req").equals("from")) {
+                String currentPage = request.getParameter("page");
+                int page = Integer.valueOf(currentPage);
                 int userId = user.getUserid();
+                String currentFolder = request.getParameter("currentFolder");
                 try {
-                    mail = mailDao.returnSortByFrom(userId, conn);
+                    mail = mailDao.returnSort(currentFolder,userId,page,10,"receiveFrom",conn);
                     JSONArray jsonArray = JSONArray.fromObject(mail);
                     out = response.getWriter();
                     out.print(jsonArray);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
-            } else if (request.getParameter("req").equals("subject")) {
-                System.out.println("subject");
+                DbFactory.closeConn(conn);
+            } else  if (request.getParameter("req").equals("subject")) {
+                String currentPage = request.getParameter("page");
+                int page = Integer.valueOf(currentPage);
                 int userId = user.getUserid();
+                String currentFolder = request.getParameter("currentFolder");
                 try {
-                    mail = mailDao.returnSortBySubject(userId, conn);
+                    mail = mailDao.returnSort(currentFolder,userId,page,10,"title",conn);
                     JSONArray jsonArray = JSONArray.fromObject(mail);
                     out = response.getWriter();
                     out.print(jsonArray);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
-            } else if (request.getParameter("req").equals("date")) {
-                System.out.println("date");
+                DbFactory.closeConn(conn);
+            }  else  if (request.getParameter("req").equals("date")) {
+                String currentPage = request.getParameter("page");
+                int page = Integer.valueOf(currentPage);
                 int userId = user.getUserid();
+                String currentFolder = request.getParameter("currentFolder");
                 try {
-                    mail = mailDao.returnSortByDate(userId, conn);
+                    mail = mailDao.returnSort(currentFolder,userId,page,10,"mailDate",conn);
                     JSONArray jsonArray = JSONArray.fromObject(mail);
                     out = response.getWriter();
                     out.print(jsonArray);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
-            } else if (request.getParameter("req").equals("size")) {
-                System.out.println("size");
+                DbFactory.closeConn(conn);
+            } else  if (request.getParameter("req").equals("size")) {
+                String currentPage = request.getParameter("page");
+                int page = Integer.valueOf(currentPage);
                 int userId = user.getUserid();
+                String currentFolder = request.getParameter("currentFolder");
                 try {
-                    mail = mailDao.returnSortBySize(userId, conn);
+                    mail = mailDao.returnSort(currentFolder,userId,page,10,"mailSize",conn);
                     JSONArray jsonArray = JSONArray.fromObject(mail);
                     out = response.getWriter();
                     out.print(jsonArray);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
+                DbFactory.closeConn(conn);
             }
         }
     }

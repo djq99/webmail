@@ -3,7 +3,9 @@ package Dmail.model;
 /**
  * Created by jiaqi on 10/26/14.
  */
+
 import java.util.List;
+
 public class Email {
 
     private String emailID;
@@ -42,77 +44,62 @@ public class Email {
 
     private String userID;
 
-    public String getEmailID()
-    {
+    public String getEmailID() {
         return emailID;
     }
 
-    public void setEmailID(String emailID)
-    {
+    public void setEmailID(String emailID) {
         this.emailID = emailID;
     }
 
-    public String getIsNew()
-    {
+    public String getIsNew() {
         return isNew;
     }
 
-    public void setIsNew(String isNew)
-    {
-        this.isNew =isNew;
+    public void setIsNew(String isNew) {
+        this.isNew = isNew;
     }
 
-    public int getSize()
-    {
+    public int getSize() {
         return size;
     }
 
-    public void setSize(int size)
-    {
+    public void setSize(int size) {
         this.size = size;
     }
 
 
-    public String getFrom()
-    {
+    public String getFrom() {
         return from;
     }
 
-    public void setFrom(String from)
-    {
+    public void setFrom(String from) {
         this.from = from;
     }
 
-    public String getTitle()
-    {
+    public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title)
-    {
+    public void setTitle(String title) {
         this.title = title;
     }
 
 
-    public String getMailDate()
-    {
+    public String getMailDate() {
         return mailDate;
     }
 
-    public void setMailDate(String mailDate)
-    {
+    public void setMailDate(String mailDate) {
         this.mailDate = mailDate;
     }
 
 
-
-    public String getUserID()
-    {
+    public String getUserID() {
         return userID;
     }
 
-    public void setUserID(String userID)
-    {
+    public void setUserID(String userID) {
         this.userID = userID;
     }
 

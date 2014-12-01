@@ -45,6 +45,7 @@ public class SendMail  extends HttpServlet {
         email.setTitle(request.getParameter("subject"));
         email.setContent(request.getParameter("message"));
 
+
         //send email
         SslSmtpClient.sendEMail(user,email);
 

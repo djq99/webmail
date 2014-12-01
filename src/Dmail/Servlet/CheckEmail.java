@@ -7,6 +7,7 @@ import Dmail.mail.SslPopClient;
 import Dmail.model.Email;
 import Dmail.model.User;
 import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 import org.stringtemplate.v4.ST;
 import org.stringtemplate.v4.STGroup;
 import org.stringtemplate.v4.STGroupDir;
@@ -21,21 +22,11 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
-/**
- * Created by tomjacky on 11/25/14.
- */
+
 public class CheckEmail extends HttpServlet{
-    STGroup templates = new STGroupDir(WebServer.WEBMAIL_TEMPLATES_ROOT); // call unload() to wack the cache
-    {
-        templates.setListener(WebServer.stListener);
-        templates.delimiterStartChar = '$';
-        templates.delimiterStopChar = '$';
-    }
-
-    HttpServletRequest request;
-    HttpServletResponse response;
-    PrintWriter out;
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession(false);
@@ -43,27 +34,11 @@ public class CheckEmail extends HttpServlet{
             response.sendRedirect("login");
         } else {
             User user = (User) session.getAttribute("userinfo");
-            int emailNumber = SslPopClient.returnEmailNumber(user);
-            SslPopClient.returnEmail(user, emailNumber);
-            Connection conn = DbFactory.getConnection();
-            MailDao mailDao = new MailDao();
-            ArrayList<Email> mail;
 
-            try {
-                mail = mailDao.returnMailHeader(user.getUserid(),conn);
-                JSONArray jsonArray = JSONArray.fromObject(mail);
-                out = response.getWriter();
-                out.print(jsonArray);
-               // ST mailST = templates.getInstanceOf("mailPage");
-             //   mailST.add("mails",mail);
-               // String mailPage = mailST.render();
-              //  out = response.getWriter();
-             //   out.print(mailPage);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-            finally {
-                DbFactory.closeConn(conn);
+            if (request.getParameter("req").equals("checmail"))
+            {
+                int emailNumber = SslPopClient.returnEmailNumber(user);
+                SslPopClient.returnEmail(user, emailNumber);
             }
         }
     }

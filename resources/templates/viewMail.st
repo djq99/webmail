@@ -34,7 +34,6 @@ viewMail(header,content,attachment,newNum) ::= <<
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
                 <li><a href="mail">Inbox <span class="badge" id ="mailNumbers">$newNum$</span></a></li>
-                 <li><a href="#">Outbox</a></li>
                 <li><a herf="#edit" style="cursor: pointer" data-toggle="modal" data-target="#edit">Compose</a></li>
             </ul>
         </div>

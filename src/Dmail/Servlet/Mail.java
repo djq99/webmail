@@ -28,6 +28,7 @@ import java.util.ArrayList;
 public class Mail extends HttpServlet {
 
     STGroup templates = new STGroupDir(WebServer.WEBMAIL_TEMPLATES_ROOT); // call unload() to wack the cache
+
     {
         templates.setListener(WebServer.stListener);
         templates.delimiterStartChar = '$';
@@ -37,12 +38,13 @@ public class Mail extends HttpServlet {
     HttpServletRequest request;
     HttpServletResponse response;
     PrintWriter out;
+
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         HttpSession session = request.getSession(false);
-        if(session == null||session.getAttribute("userinfo") ==null) {
-           response.sendRedirect("login");
+        if (session == null || session.getAttribute("userinfo") == null) {
+            response.sendRedirect("login");
         } else {
             User user = (User) session.getAttribute("userinfo");
             Connection conn = DbFactory.getConnection();
@@ -50,17 +52,11 @@ public class Mail extends HttpServlet {
             ArrayList<Email> mail;
 
             try {
-                mail = mailDao.returnMailHeader(user.getUserid(),conn);
                 ST mailST = templates.getInstanceOf("mailPage");
-              //  mailST.add("mails",mail);
-                JSONArray jsonArray = JSONArray.fromObject(mail);
                 String mailPage = mailST.render();
                 out = response.getWriter();
                 out.print(mailPage);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-            finally {
+            } finally {
                 DbFactory.closeConn(conn);
             }
         }
@@ -68,11 +64,9 @@ public class Mail extends HttpServlet {
 
 
     public void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException
-    {
+            throws ServletException, IOException {
 
     }
-
 
 
 }
