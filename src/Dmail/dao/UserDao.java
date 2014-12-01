@@ -56,4 +56,13 @@ public class UserDao  {
         rs = pstmt.executeQuery();
         return rs.getInt("userId");
     }
+    public void updatePassword(User user,Connection conn) throws SQLException {
+        String sql="update mail set password = ? where userId  = ?";
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        pstmt.setString(1,user.getPassword());
+        pstmt.setInt(2,user.getUserid());
+        pstmt.execute();
+
+    }
+
 }

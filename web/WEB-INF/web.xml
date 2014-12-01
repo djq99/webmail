@@ -116,4 +116,13 @@
         <servlet-name>search</servlet-name>
         <url-pattern>search</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>account</servlet-name>
+        <servlet-class>Dmail.Servlet.Account</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>account</servlet-name>
+        <url-pattern>account</url-pattern>
+    </servlet-mapping>
+
 </web-app>

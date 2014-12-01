@@ -3,6 +3,7 @@ package Dmail.Servlet;
 /**
  * Created by jiaqi on 10/25/14.
  */
+import java.io.File;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -81,6 +82,12 @@ public class Login extends HttpServlet {
                 HttpSession session = request.getSession();
                 session.setAttribute("userinfo",user);
                 response.sendRedirect("mail");
+                File saveDir = new File("/userResource/"+user.getUserid());
+                if(!saveDir.exists())
+                {
+                    saveDir.mkdir();
+                }
+
             }
         } catch (SQLException e) {
             e.printStackTrace();

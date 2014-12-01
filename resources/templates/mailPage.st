@@ -25,7 +25,7 @@ mailPage(mails) ::= <<
             <a class="navbar-brand" href="#">Dmail</a> </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Account</a></li>
+                <li><a href="#" onclick="javascript:window.location.href='account'">Account</a></li>
                 <li><a href="logout">Log out</a></li>
             </ul>
         </div>
