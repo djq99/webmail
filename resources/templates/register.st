@@ -5,7 +5,7 @@ register() ::= <<
 <html>
 <head>
 
-
+<title>register</title>
     <!--META-->
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Login Form</title>
@@ -14,7 +14,7 @@ register() ::= <<
     <link href="bootstrap-3.2.0-dist/css/style.css" rel="stylesheet" type="text/css" />
 
     <!--SCRIPTS-->
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
+     <script type='text/javascript' src="bootstrap-3.2.0-dist/js/jquery-1.4.4.min.js"></script>
     <!--Slider-in icons-->
 </head>
 <body>
