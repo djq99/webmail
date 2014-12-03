@@ -82,9 +82,6 @@ public class SslSmtpClient {
             if (!email.getSendTo().equals("")) {
                 message.setRecipient(Message.RecipientType.TO, new InternetAddress(email.getSendTo()));
             }
-            if (!email.getSendCC().equals("") && email.getSendCC() != null) {
-                message.setRecipient(Message.RecipientType.CC, new InternetAddress(email.getSendCC()));
-            }
             message.setSubject(email.getTitle());
             message.setSentDate(new Date());
 
