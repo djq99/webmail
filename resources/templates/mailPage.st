@@ -35,11 +35,11 @@ mailPage(mails) ::= <<
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <li><a href="#" id = "checkmail">Check mail</a></li>
-                <li><a href="mail">Inbox <span class="badge" id ="mailNumbers"></span></a></li>
-                <li><a href="#" id="outbox">Outbox</a></li>
-                <li><a herf="#edit" style="cursor: pointer" data-toggle="modal" data-target="#edit">Compose</a></li>
-                <li><a href="#" id="trash">Trash</a></li>
+                <li><a href="#" id = "checkmail">   <span class="glyphicon glyphicon-zoom-in"></span> Check mail</a></li>
+                <li><a href="mail">   <span class="glyphicon glyphicon-inbox"></span> Inbox <span class="badge" id ="mailNumbers"></span></a></li>
+                <li><a href="#" id="outbox"><span class="glyphicon glyphicon-send"></span>  Outbox</a></li>
+                <li><a herf="#edit" style="cursor: pointer" data-toggle="modal" data-target="#edit"><span class="glyphicon glyphicon-pencil"></span>Compose</a></li>
+                <li><a href="#" id="trash"><span class="glyphicon glyphicon-trash"></span>  Trash</a></li>
             </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -75,12 +75,6 @@ mailPage(mails) ::= <<
                                     </div>
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <span class="input-group-addon">CC:</span>
-                                            <input name="email_cc" type="email" class="form-control" placeholder="Email CC">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="input-group">
                                             <span class="input-group-addon">Subject:</span>
                                             <input name="subject" type="text" class="form-control" placeholder="Subject">
                                         </div>
@@ -112,7 +106,7 @@ mailPage(mails) ::= <<
                     <div class="col-md-1" id="button1">
                         <div class="btn-group">
                             <button type="button" class="btn btn-default btn-sm btn-flat dropdown-toggle" data-toggle="dropdown">
-                                Action <span class="caret"></span>
+                                <span class="glyphicon glyphicon-th-list"></span> Action <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu" role="menu" id="action">
                                 <li><a href="#" id ="markread">Mark as read</a></li>
@@ -128,7 +122,7 @@ mailPage(mails) ::= <<
                      <div class="col-md-1" id="button2">
                                             <div class="btn-group">
                                                 <button type="button" class="btn btn-default btn-sm btn-flat dropdown-toggle" data-toggle="dropdown">
-                                                   Folders <span class="caret"></span>
+                                                  <span class="glyphicon glyphicon-folder-open"></span> Folders <span class="caret"></span>
                                                 </button>
                                                 <ul class="dropdown-menu" id="folders" role="menu">
                                                     <li><a href="#" " data-toggle="modal" data-target="#create">Create new folder</a></li>
@@ -184,7 +178,7 @@ mailPage(mails) ::= <<
                                                 <input class="span2" id="searchcontent" type="text">
                                                 <div class="btn-group">
                                                     <button class="btn btn-default btn-sm btn-flat dropdown-toggle " data-toggle="dropdown">
-                                                        Search by
+                                                      <span class="glyphicon glyphicon-search"></span> Search by
                                                         <span class="caret"></span>
                                                     </button>
                                                     <ul class="dropdown-menu">

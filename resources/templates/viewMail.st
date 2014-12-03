@@ -69,12 +69,6 @@ viewMail(header,content,attachment,newNum) ::= <<
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="input-group">
-                                                        <span class="input-group-addon">CC:</span>
-                                                        <input name="email_cc" type="email" class="form-control" placeholder="Email CC">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <div class="input-group">
                                                         <span class="input-group-addon">Subject:</span>
                                                         <input name="subject" type="text" class="form-control" placeholder="Subject">
                                                     </div>
@@ -175,7 +169,9 @@ viewMail(header,content,attachment,newNum) ::= <<
 
         </div>
     </div>
+
 </div>
+
 </body>
 </html>
 >>

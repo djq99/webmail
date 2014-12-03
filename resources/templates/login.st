@@ -32,7 +32,7 @@ login() ::= <<
 
 </head>
 <body>
-
+<script type='text/javascript' src="bootstrap-3.2.0-dist/js/login.js"></script>
 <!--WRAPPER-->
 <div id="wrapper">
 
@@ -48,21 +48,21 @@ login() ::= <<
 
         <div class="header">
             <!--TITLE--><h1>Login Dmail</h1><!--END TITLE-->
-            <!--DESCRIPTION--><br><br><!--END DESCRIPTION-->
+            <!--DESCRIPTION--><!--END DESCRIPTION-->
         </div>
         <!--END HEADER-->
 
         <!--CONTENT-->
         <div class="content">
-            <!--USERNAME--><input name="username" type="text" class="input username" value="Username" onfocus="this.value=''" /><!--END USERNAME-->
-            <!--PASSWORD--><input name="password" type="password" class="input password" value="Password" onfocus="this.value=''" /><!--END PASSWORD-->
+            <!--USERNAME-->username<input name="username" type="text" class="input username" value="Username" onfocus="this.value=''" /><!--END USERNAME-->
+            <!--PASSWORD-->password<input name="password" type="password" class="input password" value="Password" onfocus="this.value=''" /><!--END PASSWORD-->
         </div>
         <!--END CONTENT-->
 
         <!--FOOTER-->
         <div class="footer">
-            <!--LOGIN BUTTON--><input type="submit" name="submit" value="Login" class="button" /><!--END LOGIN BUTTON-->
-            <!--REGISTER BUTTON--><input type="button" name="submit" value="Register" class="register" onclick="javascript:window.location.href='register'"/><!--END REGISTER BUTTON-->
+            <!--LOGIN BUTTON--><input type="button" id ="loginMail"  value="Login" class="button" /><!--END LOGIN BUTTON-->
+            <!--REGISTER BUTTON--><input type="button"  value="Register" class="register" onclick="javascript:window.location.href='register'"/><!--END REGISTER BUTTON-->
         </div>
         <!--END FOOTER-->
 

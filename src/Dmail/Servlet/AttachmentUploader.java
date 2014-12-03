@@ -40,7 +40,7 @@ public class AttachmentUploader extends HttpServlet {
         File saveDir = new File(savePath);
 
         if(!saveDir.exists()){
-            saveDir.mkdir();
+            saveDir.mkdirs();
         }
 
 

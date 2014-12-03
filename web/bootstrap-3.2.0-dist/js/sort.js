@@ -5,7 +5,6 @@ $(document).ready(function () {
         $.getJSON("sort", {req: "from", page: page, currentFolder: currentFolder}, function (data, status) {
             var len = data.length;
             var table = "<table class=\"table table-hover\">";
-            var newNumber = 0;
             if (data.length == 0) {
                 $("#maillist").html("</br><B><font size=5>The Folder is empty</font></B>");
             }
@@ -16,7 +15,6 @@ $(document).ready(function () {
                     table = table + "<tr id =" + data[i].emailID + " style=\"cursor: pointer\">";
                     table = table + "<td><input type=\"checkbox\" name =\"child\"></td>";
                     if (data[i].isNew == "true") {
-                        newNumber = newNumber + 1;
                         table = table + "<td onclick=\"javascript:window.location.href='viewmail?mailinfo=" + data[i].emailID + "'\"><font color='red'>new! </font>";
                     }
                     else {
@@ -35,9 +33,6 @@ $(document).ready(function () {
                 }
                 table = table + " </tbody></table>";
                 $("#maillist").html(table);
-                if (newNumber > 0) {
-                    $("#mailNumbers").html(newNumber);
-                }
             }
         });
     })
@@ -47,7 +42,6 @@ $(document).ready(function () {
         $.getJSON("sort", {req: "date", page: page, currentFolder: currentFolder}, function (data, status) {
             var len = data.length;
             var table = "<table class=\"table table-hover\">";
-            var newNumber = 0;
             if (data.length == 0) {
                 $("#maillist").html("</br><B><font size=5>The Folder is empty</font></B>");
             }
@@ -58,7 +52,6 @@ $(document).ready(function () {
                     table = table + "<tr id =" + data[i].emailID + " style=\"cursor: pointer\">";
                     table = table + "<td><input type=\"checkbox\" name =\"child\"></td>";
                     if (data[i].isNew == "true") {
-                        newNumber = newNumber + 1;
                         table = table + "<td onclick=\"javascript:window.location.href='viewmail?mailinfo=" + data[i].emailID + "'\"><font color='red'>new! </font>";
                     }
                     else {
@@ -77,9 +70,6 @@ $(document).ready(function () {
                 }
                 table = table + " </tbody></table>";
                 $("#maillist").html(table);
-                if (newNumber > 0) {
-                    $("#mailNumbers").html(newNumber);
-                }
             }
         });
     })
@@ -89,7 +79,6 @@ $(document).ready(function () {
         $.getJSON("sort", {req: "subject", page: page, currentFolder: currentFolder}, function (data, status) {
             var len = data.length;
             var table = "<table class=\"table table-hover\">";
-            var newNumber = 0;
             if (data.length == 0) {
                 $("#maillist").html("</br><B><font size=5>The Folder is empty</font></B>");
             }
@@ -100,7 +89,6 @@ $(document).ready(function () {
                     table = table + "<tr id =" + data[i].emailID + " style=\"cursor: pointer\">";
                     table = table + "<td><input type=\"checkbox\" name =\"child\"></td>";
                     if (data[i].isNew == "true") {
-                        newNumber = newNumber + 1;
                         table = table + "<td onclick=\"javascript:window.location.href='viewmail?mailinfo=" + data[i].emailID + "'\"><font color='red'>new! </font>";
                     }
                     else {
@@ -119,9 +107,7 @@ $(document).ready(function () {
                 }
                 table = table + " </tbody></table>";
                 $("#maillist").html(table);
-                if (newNumber > 0) {
-                    $("#mailNumbers").html(newNumber);
-                }
+
             }
         });
     })
@@ -131,7 +117,6 @@ $(document).ready(function () {
         $.getJSON("sort", {req: "size", page: page, currentFolder: currentFolder}, function (data, status) {
             var len = data.length;
             var table = "<table class=\"table table-hover\">";
-            var newNumber = 0;
             if (data.length == 0) {
                 $("#maillist").html("</br><B><font size=5>The Folder is empty</font></B>");
             }
@@ -142,7 +127,6 @@ $(document).ready(function () {
                     table = table + "<tr id =" + data[i].emailID + " style=\"cursor: pointer\">";
                     table = table + "<td><input type=\"checkbox\" name =\"child\"></td>";
                     if (data[i].isNew == "true") {
-                        newNumber = newNumber + 1;
                         table = table + "<td onclick=\"javascript:window.location.href='viewmail?mailinfo=" + data[i].emailID + "'\"><font color='red'>new! </font>";
                     }
                     else {
@@ -161,9 +145,7 @@ $(document).ready(function () {
                 }
                 table = table + " </tbody></table>";
                 $("#maillist").html(table);
-                if (newNumber > 0) {
-                    $("#mailNumbers").html(newNumber);
-                }
+
             }
         });
     })

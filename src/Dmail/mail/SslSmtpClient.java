@@ -94,7 +94,7 @@ public class SslSmtpClient {
                 MimeMultipart allMultipart = new MimeMultipart("mixed");
                 MimeBodyPart HtmlBodypart = new MimeBodyPart();
                 String mailContent = email.getContent();
-                HtmlBodypart.setContent(mailContent, "text/html;charset=UTF-8");
+                HtmlBodypart.setContent(mailContent, "text/html;charset=ISO-8859-1");
 
                 MimeBodyPart attachFileBodypart = new MimeBodyPart();
                 MimeMultipart attachFileMMP = new MimeMultipart("related");
@@ -104,7 +104,7 @@ public class SslSmtpClient {
                 attachFileBody.setDataHandler(new DataHandler(fds));
                 attachFileBody.setFileName(MimeUtility.encodeText(fds.getName()));
                 attachFileMMP.addBodyPart(attachFileBody);
-                attachFileBodypart.setContent(attachFileMMP, "text/html;charset=UTF-8");
+                attachFileBodypart.setContent(attachFileMMP, "text/html;charset=ISO-8859-1");
 
                 allMultipart.addBodyPart(HtmlBodypart);
                 allMultipart.addBodyPart(attachFileBodypart);
@@ -139,7 +139,7 @@ public class SslSmtpClient {
                 MimeMultipart allMultipart = new MimeMultipart("text");
                 MimeBodyPart textBodypart = new MimeBodyPart();
                 String mailContent = email.getContent();
-                textBodypart.setContent(mailContent, "text/plain;charset=UTF-8");
+                textBodypart.setContent(mailContent, "text/plain;charset=ISO-8859-1");
 
                 allMultipart.addBodyPart(textBodypart);
                 message.setContent(allMultipart);

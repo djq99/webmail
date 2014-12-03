@@ -12,9 +12,12 @@ account() ::= <<
 
     <!--STYLESHEETS-->
     <link href="bootstrap-3.2.0-dist/css/style.css" rel="stylesheet" type="text/css" />
+     <link href="bootstrap-3.2.0-dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
+         <link href="bootstrap-3.2.0-dist/css/bootstrap-theme.css" rel="stylesheet" type="text/css" />
 
     <!--SCRIPTS-->
      <script type='text/javascript' src="bootstrap-3.2.0-dist/js/jquery-1.4.4.min.js"></script>
+      <script type='text/javascript' src="bootstrap-3.2.0-dist/js/changepsd.js"></script>
     <!--Slider-in icons-->
 </head>
 <body>
@@ -39,16 +42,32 @@ account() ::= <<
         <!--END HEADER-->
 
         <!--CONTENT-->
-        <div class="content">
-            <!--PASSWORD-->old password <input name="oldpassword" type="password" class="input password" value="" onfocus="this.value=''" /><!--END PASSWORD-->
-            <!--PASSWORD-->new password <input name="newPassword" type="password" class="input password" value="" onfocus="this.value=''" /><!--END PASSWORD-->
-            <!--PASSWORD--> confirm <input name="confirm" type="password" class="input password" value="" onfocus="this.value=''" /><!--END PASSWORD-->
-        </div>
+            <div class="content">
+                     <div class="input-group">
+                      <span class="input-group-addon">old password</span>
+                       <input type="password" name = "oldPassword" id="password" class="form-control" placeholder="password">
+                       <span class="input-group-addon" id ="op" ></span>
+                       </div>
+                     </div>
+                         <div class="content">
+                                  <div class="input-group">
+                                   <span class="input-group-addon">new password</span>
+                                    <input type="password" name = "newPassword" id="password" class="form-control" placeholder="password">
+                                    <span class="input-group-addon" id ="np" ></span>
+                                    </div>
+                                  </div>
+                                      <div class="content">
+                                               <div class="input-group">
+                                                <span class="input-group-addon">confirm password</span>
+                                                 <input type="password" name = "confirmPassword" id="password" class="form-control" placeholder="password">
+                                                 <span class="input-group-addon" id ="cp" ></span>
+                                                 </div>
+                                               </div>
         <!--END CONTENT-->
 
         <!--FOOTER-->
         <div class="footer">
-            <!--LOGIN BUTTON--><input type="submit" name="submit" value="submit" class="button" /><!--END LOGIN BUTTON-->
+            <!--LOGIN BUTTON--><input type="button" id="changePsd" name="changePsd" value="submit" class="button" /><!--END LOGIN BUTTON-->
              <!--LOGIN BUTTON--><input type="button" name="login" value="back" class="button" onclick="javascript:window.location.href='mail'"/><!--END LOGIN BUTTON-->
         </div>
         <!--END FOOTER-->

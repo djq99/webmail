@@ -73,6 +73,7 @@ public class ViewMail extends HttpServlet {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+
             finally {
                 DbFactory.closeConn(conn);
             }
@@ -277,14 +278,16 @@ public class ViewMail extends HttpServlet {
                 email.setContent(content);
                 SslSmtpClient.forwardEMail(user,email);
             }
+            //if the request is reply
             else if(request.getParameter("message")!=null)
             {
                 email.setContent(request.getParameter("message"));
+                email.setTitle("reply: "+email.getTitle());
                 String sendTo = email.getFrom();
-                String[] ary = sendTo.split("<");
+                String[] ary = sendTo.split("&lt");
                 String temp ="";
                 for(int i=1;i < ary.length;i++) {
-                    temp = temp+ary[i].substring(0, ary[i].indexOf(">"));
+                    temp = temp+ary[i].substring(0, ary[i].indexOf("&gt"));
                 }
                 sendTo = temp;
                 email.setSendTo(sendTo);

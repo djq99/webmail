@@ -9,12 +9,12 @@ public class UserDao  {
 
     public boolean findUser(User user, Connection conn) throws SQLException {
         String sql = "select username,password from userinfo where username=? and password=?";
-        boolean rs = false;
+        ResultSet rs;
         PreparedStatement pstmt = conn.prepareStatement(sql);
         pstmt.setString(1,user.getUsername());
         pstmt.setString(2,user.getPassword());
-        rs = pstmt.execute();
-        return rs;
+        rs = pstmt.executeQuery();
+        return rs.next();
 
     }
     public User returnUserInfo(String username, String password, Connection conn) throws SQLException {
@@ -36,16 +36,14 @@ public class UserDao  {
         }
         return null;
     }
-    public boolean createUser(User user, Connection conn) throws SQLException {
+    public void createUser(User user, Connection conn) throws SQLException {
         String sql = "insert into userinfo(username,password,emailAddress,emailPassword)values(?,?,?,?)";
-        boolean rs = false;
         PreparedStatement pstmt = conn.prepareStatement(sql);
         pstmt.setString(1,user.getUsername());
         pstmt.setString(2,user.getPassword());
         pstmt.setString(3,user.getEmailaddress());
         pstmt.setString(4,user.getEmailPassword());
-        rs = pstmt.execute();
-        return rs;
+         pstmt.execute();
     }
     public int returnUserID(User user, Connection conn) throws SQLException {
         String sql = "select userId from userinfo where username=? and password=? ";
@@ -57,12 +55,20 @@ public class UserDao  {
         return rs.getInt("userId");
     }
     public void updatePassword(User user,Connection conn) throws SQLException {
-        String sql="update mail set password = ? where userId  = ?";
+        String sql="update userinfo set password = ? where userId  = ?";
         PreparedStatement pstmt = conn.prepareStatement(sql);
         pstmt.setString(1,user.getPassword());
         pstmt.setInt(2,user.getUserid());
         pstmt.execute();
 
+    }
+    public boolean checkUser(String username, Connection conn) throws SQLException {
+        String sql=" select * from userinfo where username = ?";
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+        ResultSet rs;
+        pstmt.setString(1,username);
+        rs = pstmt.executeQuery();
+        return rs.next();
     }
 
 }

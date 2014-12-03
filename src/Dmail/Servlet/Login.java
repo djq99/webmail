@@ -51,10 +51,8 @@ public class Login extends HttpServlet {
         else{
             ST loginST = templates.getInstanceOf("login");
             String login = loginST.render();
-           // System.out.println(login);
             out = response.getWriter();
             out.print(login);
-            //response.sendRedirect("Home.html");
         }
     }
 
@@ -69,32 +67,24 @@ public class Login extends HttpServlet {
         UserDao userDao = new UserDao();
         int uid = 0;
         try {
-            uid = userDao.returnUserID(user,conn);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        if(uid!=-1)
-        user.setUserid(uid);
-        try {
-            if(userDao.findUser(user,conn))
-            {
-                user = userDao.returnUserInfo(user.getUsername(),user.getPassword(),conn);
-                HttpSession session = request.getSession();
-                session.setAttribute("userinfo",user);
-                response.sendRedirect("mail");
-                File saveDir = new File("/userResource/"+user.getUserid());
-                if(!saveDir.exists())
-                {
-                    saveDir.mkdir();
-                }
 
+            uid = userDao.returnUserID(user, conn);
+            if (uid != -1)
+            user.setUserid(uid);
+            user = userDao.returnUserInfo(user.getUsername(), user.getPassword(), conn);
+            HttpSession session = request.getSession();
+            session.setAttribute("userinfo", user);
+            response.sendRedirect("mail");
+            File saveDir = new File("web/userResource/" + user.getUserid());
+            if (!saveDir.exists()) {
+                saveDir.mkdirs();
             }
+            DbFactory.closeConn(conn);
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        finally {
-            DbFactory.closeConn(conn);
-        }
+
     }
 }
 

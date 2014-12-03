@@ -1,5 +1,13 @@
 $(document).ready(
     function () {
+        $.get("maillist",{req:"newNumber"},function(data){
+            if(data > 0)
+            {
+                $('#mailNumbers').html(data);
+            }
+        })
+
+
         $('#checkmail').click(function () {
             $.get("checkmail", {req: "checmail"}, function (data) {
                 window.location.reload();
@@ -40,7 +48,6 @@ $(document).ready(
         $.getJSON(url, {req: "maillist"}, function (data) {
             var len = data.length;
             var table = "<table class=\"table table-hover\">";
-            var newNumber = 0;
             if (data.length == 0) {
                 $("#maillist").html("</br><B><font size=5>The Inbox is empty</font></B>");
             }
@@ -51,7 +58,6 @@ $(document).ready(
                     table = table + "<tr id =" + data[i].emailID + " style=\"cursor: pointer\">";
                     table = table + "<td><input type=\"checkbox\" name =\"child\"></td>";
                     if (data[i].isNew == "true") {
-                        newNumber = newNumber + 1;
                         table = table + "<td onclick=\"javascript:window.location.href='viewmail?mailinfo=" + data[i].emailID + "'\"><font color='red'>new! </font>";
                     }
                     else {
@@ -70,9 +76,6 @@ $(document).ready(
                 }
                 table = table + " </tbody></table>";
                 $("#maillist").html(table);
-                if (newNumber > 0) {
-                    $("#mailNumbers").html(newNumber);
-                }
                 $('#SelectAll').click(function () {
                     if (this.checked) {
                         $(':checkbox').attr('checked', 'checked');
@@ -114,7 +117,6 @@ $(document).ready(
                 $.getJSON('folder', {req: 'changefolder', folderName: folderName}, function (data, status) {
                     var len = data.length;
                     var table = "<table class=\"table table-hover\">";
-                    var newNumber = 0;
                     if (data.length == 0) {
                         $("#maillist").html("</br><B><font size=5>The Folder is empty</font></B>");
                     }
@@ -125,7 +127,6 @@ $(document).ready(
                             table = table + "<tr id =" + data[i].emailID + " style=\"cursor: pointer\">";
                             table = table + "<td><input type=\"checkbox\" name =\"child\"></td>";
                             if (data[i].isNew == "true") {
-                                newNumber = newNumber + 1;
                                 table = table + "<td onclick=\"javascript:window.location.href='viewmail?mailinfo=" + data[i].emailID + "'\"><font color='red'>new! </font>";
                             }
                             else {
@@ -144,9 +145,6 @@ $(document).ready(
                         }
                         table = table + " </tbody></table>";
                         $("#maillist").html(table);
-                        if (newNumber > 0) {
-                            $("#mailNumbers").html(newNumber);
-                        }
                         $('#SelectAll').click(function () {
                             if (this.checked) {
                                 $(':checkbox').attr('checked', 'checked');
@@ -241,7 +239,6 @@ $(document).ready(
             $.getJSON('folder', {req: 'changefolder', folderName: "trash"}, function (data, status) {
                 var len = data.length;
                 var table = "<table class=\"table table-hover\">";
-                var newNumber = 0;
                 var button1 = "<button id='cleantrash' class='btn btn-danger'>clean trash</button>"
                 $("#button1").html(button1);
                 var button2 = "<button id='deletemail' class='btn btn-danger'>delete email</button>"
@@ -258,7 +255,6 @@ $(document).ready(
                         table = table + "<tr id =" + data[i].emailID + " style=\"cursor: pointer\">";
                         table = table + "<td><input type=\"checkbox\" name =\"child\"></td>";
                         if (data[i].isNew == "true") {
-                            newNumber = newNumber + 1;
                             table = table + "<td onclick=\"javascript:window.location.href='viewmail?mailinfo=" + data[i].emailID + "'\"><font color='red'>new! </font>";
                         }
                         else {
@@ -277,9 +273,6 @@ $(document).ready(
                     }
                     table = table + " </tbody></table>";
                     $("#maillist").html(table);
-                    if (newNumber > 0) {
-                        $("#mailNumbers").html(newNumber);
-                    }
                     $('#SelectAll').click(function () {
                         if (this.checked) {
                             $(':checkbox').attr('checked', 'checked');
@@ -379,7 +372,6 @@ $(document).ready(
             $.getJSON('folder', {req: 'changefolder', folderName: "outbox"}, function (data, status) {
                 var len = data.length;
                 var table = "<table class=\"table table-hover\">";
-                var newNumber = 0;
                 if (data.length == 0) {
                     $("#maillist").html("</br><B><font size=5>The Folder is empty</font></B>");
                 }
@@ -390,7 +382,6 @@ $(document).ready(
                         table = table + "<tr id =" + data[i].emailID + " style=\"cursor: pointer\">";
                         table = table + "<td><input type=\"checkbox\" name =\"child\"></td>";
                         if (data[i].isNew == "true") {
-                            newNumber = newNumber + 1;
                             table = table + "<td onclick=\"javascript:window.location.href='viewmail?mailinfo=" + data[i].emailID + "'\"><font color='red'>new! </font>";
                         }
                         else {
@@ -409,9 +400,6 @@ $(document).ready(
                     }
                     table = table + " </tbody></table>";
                     $("#maillist").html(table);
-                    if (newNumber > 0) {
-                        $("#mailNumbers").html(newNumber);
-                    }
                     $('#SelectAll').click(function () {
                         if (this.checked) {
                             $(':checkbox').attr('checked', 'checked');
@@ -451,7 +439,6 @@ $(document).ready(
                 $.getJSON('search', {req: 'searchfrom', folderName: folder, content: content}, function (data, status) {
                     var len = data.length;
                     var table = "<table class=\"table table-hover\">";
-                    var newNumber = 0;
                     if (data.length == 0) {
                         $("#maillist").html("</br><B><font size=5>No result</font></B>");
                     }
@@ -462,7 +449,6 @@ $(document).ready(
                             table = table + "<tr id =" + data[i].emailID + " style=\"cursor: pointer\">";
                             table = table + "<td><input type=\"checkbox\" name =\"child\"></td>";
                             if (data[i].isNew == "true") {
-                                newNumber = newNumber + 1;
                                 table = table + "<td onclick=\"javascript:window.location.href='viewmail?mailinfo=" + data[i].emailID + "'\"><font color='red'>new! </font>";
                             }
                             else {
@@ -481,9 +467,6 @@ $(document).ready(
                         }
                         table = table + " </tbody></table>";
                         $("#maillist").html(table);
-                        if (newNumber > 0) {
-                            $("#mailNumbers").html(newNumber);
-                        }
                         $('#SelectAll').click(function () {
                             if (this.checked) {
                                 $(':checkbox').attr('checked', 'checked');
@@ -526,7 +509,6 @@ $(document).ready(
                 $.getJSON('search', {req: 'searchsubject', folderName: folder, content: content}, function (data, status) {
                     var len = data.length;
                     var table = "<table class=\"table table-hover\">";
-                    var newNumber = 0;
                     if (data.length == 0) {
                         $("#maillist").html("</br><B><font size=5>No result</font></B>");
                     }
@@ -537,7 +519,6 @@ $(document).ready(
                             table = table + "<tr id =" + data[i].emailID + " style=\"cursor: pointer\">";
                             table = table + "<td><input type=\"checkbox\" name =\"child\"></td>";
                             if (data[i].isNew == "true") {
-                                newNumber = newNumber + 1;
                                 table = table + "<td onclick=\"javascript:window.location.href='viewmail?mailinfo=" + data[i].emailID + "'\"><font color='red'>new! </font>";
                             }
                             else {
@@ -556,9 +537,6 @@ $(document).ready(
                         }
                         table = table + " </tbody></table>";
                         $("#maillist").html(table);
-                        if (newNumber > 0) {
-                            $("#mailNumbers").html(newNumber);
-                        }
                         $('#SelectAll').click(function () {
                             if (this.checked) {
                                 $(':checkbox').attr('checked', 'checked');

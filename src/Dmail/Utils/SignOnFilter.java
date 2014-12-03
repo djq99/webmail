@@ -3,7 +3,7 @@ package Dmail.Utils;
 /**
  * Created by jiaqi on 10/28/14.
  */
-/*
+
 import java.io.IOException;
 
 import javax.servlet.Filter;
@@ -18,34 +18,25 @@ public class SignOnFilter implements Filter {
     public void destroy() {
 
     }
-    public void doFilter(ServletRequest request, ServletResponse response,
-                         FilterChain chain) throws IOException, ServletException {
-        HttpServletRequest hreq=(HttpServletRequest)request;
-        HttpServletResponse hres=(HttpServletResponse) response;
-        HttpSession session = hreq.getSession();
-        if(session!=null&&session.getAttribute("user")!=null)
-            chain.doFilter(request, response);
-        else if(hreq.getRequestURI().equals(hreq.getContextPath()+"/Dmail.html")){
-            if(valid(hreq,hres))
-                hres.sendRedirect(hreq.getContextPath()+"/Dmail.html");
-            else chain.doFilter(request, response);
-        }
-        else hres.sendRedirect(hreq.getContextPath()+"/Home.html");
-    }
-    public Boolean valid(HttpServletRequest hreq, ServletResponse hres){
-        String uName=hreq.getParameter("username");
-        String uPassword=hreq.getParameter("password");
-        if(uName!=null){
-            HttpSession session=hreq.getSession();
-            session.setAttribute("user", uName);
-            return true;
-        }else return false;
+    public void doFilter(ServletRequest request,
+                         ServletResponse response,
+                         FilterChain chain)
+            throws IOException, ServletException {
 
+        HttpServletRequest req = (HttpServletRequest) request;
+        HttpServletResponse res = (HttpServletResponse) response;
+
+        HttpSession session = req.getSession();
+        if (session.getAttribute("userinfo") != null) {
+            chain.doFilter(request, response);
+        } else {
+            res.sendRedirect("login");
+        }
     }
+
 
     public void init(FilterConfig fc) throws ServletException {
         // TODO Auto-generated method stub
         this.fc=fc;
     }
 }
-*/

@@ -61,6 +61,17 @@ public class MailList extends HttpServlet {
                 DbFactory.closeConn(conn);
 
             }
+            else if(request.getParameter("req").equals("newNumber"))
+            {
+                try {
+                    int num = mailDao.returnNewMailNumber(user.getUserid(),conn);
+                    out=response.getWriter();
+                    out.print(num);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                DbFactory.closeConn(conn);
+            }
             else if (request.getParameter("req").equals("maillist"))
             {
                 ArrayList<Email> mail;
@@ -69,11 +80,10 @@ public class MailList extends HttpServlet {
                     JSONArray jsonArray = JSONArray.fromObject(mail);
                     out = response.getWriter();
                     out.print(jsonArray);
+                    DbFactory.closeConn(conn);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
-                DbFactory.closeConn(conn);
-
             }
             else if(request.getParameter("req").equals("folders"))
             {

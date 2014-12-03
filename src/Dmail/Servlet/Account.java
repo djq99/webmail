@@ -34,17 +34,16 @@ public class Account extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-     //   HttpSession session = request.getSession(false);
-      //  if(session!=null && session.getAttribute("userinfo")!=null)
-     //   {
-     //       response.sendRedirect("login");
-     //   }
-      //  else{
+        HttpSession session = request.getSession(false);
+        if(session == null||session.getAttribute("userinfo") ==null) {
+            response.sendRedirect("login");
+        }
+        else {
             ST accountST = templates.getInstanceOf("account");
             String account = accountST.render();
             out = response.getWriter();
             out.print(account);
-      //  }
+        }
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -54,14 +53,12 @@ public class Account extends HttpServlet {
         Connection conn = DbFactory.getConnection();
         UserDao userDao = new UserDao();
         HttpSession session = request.getSession(false);
-        if(session!=null && session.getAttribute("userinfo")!=null)
-        {
+        if (session == null || session.getAttribute("userinfo") == null) {
             response.sendRedirect("login");
         }
         else
         {
             User user = (User) session.getAttribute("userinfo");
-            String oldPassword = user.getPassword();
             String newPassword = request.getParameter("newPassword");
             user.setPassword(newPassword);
             try {

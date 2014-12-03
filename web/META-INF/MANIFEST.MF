@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Class-Path: commons-beanutils-1.7.0.jar commons-collections-3.2.jar co
+ mmons-lang-2.4.jar commons-logging-1.1.jar json-lib-2.2.3-jdk13.jar e
+ zmorph-1.0.4.jar commons-fileupload-1.2.1.jar commons-io-1.3.2.jar je
+ tty-alpn-client-9.2.3.v20140905.jar jetty-alpn-server-9.2.3.v20140905
+ .jar jetty-annotations-9.2.3.v20140905.jar jetty-client-9.2.3.v201409
+ 05.jar jetty-continuation-9.2.3.v20140905.jar jetty-deploy-9.2.3.v201
+ 40905.jar jetty-http-9.2.3.v20140905.jar jetty-io-9.2.3.v20140905.jar
+  jetty-jaas-9.2.3.v20140905.jar jetty-jaspi-9.2.3.v20140905.jar jetty
+ -jmx-9.2.3.v20140905.jar jetty-jndi-9.2.3.v20140905.jar jetty-plus-9.
+ 2.3.v20140905.jar jetty-proxy-9.2.3.v20140905.jar jetty-quickstart-9.
+ 2.3.v20140905.jar jetty-rewrite-9.2.3.v20140905.jar jetty-security-9.
+ 2.3.v20140905.jar jetty-server-9.2.3.v20140905.jar jetty-servlet-9.2.
+ 3.v20140905.jar jetty-servlets-9.2.3.v20140905.jar jetty-util-9.2.3.v
+ 20140905.jar jetty-webapp-9.2.3.v20140905.jar jetty-xml-9.2.3.v201409
+ 05.jar servlet-api-3.1.jar sqlite-jdbc-3.8.7.jar ST-4.0.8.jar mail.ja
+ r lucene-core-2.9.0.jar
+Main-Class: Dmail.Servers.WebServer
+

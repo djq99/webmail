@@ -3,15 +3,15 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
-  <!--  <filter>
+    <filter>
         <filter-name>signOnFilter</filter-name>
         <filter-class>Dmail.Utils.SignOnFilter</filter-class>
 
     </filter>
     <filter-mapping>
         <filter-name>signOnFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>                        -->
+        <url-pattern>/</url-pattern>
+    </filter-mapping>
     <servlet>
         <servlet-name>login</servlet-name>
         <servlet-class>Dmail.Servlet.Login</servlet-class>
@@ -123,6 +123,30 @@
     <servlet-mapping>
         <servlet-name>account</servlet-name>
         <url-pattern>account</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>checkRegister</servlet-name>
+        <servlet-class>Dmail.Servlet.CheckRegister</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>checkRegister</servlet-name>
+        <url-pattern>checkRegister</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>loginCheck</servlet-name>
+        <servlet-class>Dmail.Servlet.LoginCheck</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>loginCheck</servlet-name>
+        <url-pattern>loginCheck</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>checkPassword</servlet-name>
+        <servlet-class>Dmail.Servlet.CheckPassword</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>checkPassword</servlet-name>
+        <url-pattern>checkPassword</url-pattern>
     </servlet-mapping>
 
 </web-app>
