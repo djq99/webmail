@@ -134,6 +134,7 @@ public class ViewMail extends HttpServlet {
             result = parseMultipart(multipart,user);
         }
         return result;
+
     }
 
     public String parseMultipart(Multipart multipart, User user) throws MessagingException, IOException
@@ -151,9 +152,8 @@ public class ViewMail extends HttpServlet {
             {
                 result = parseContent(part,user);
             }
-
         }
-        return result;
+        return sb.toString();
     }
 
     public String parseContent(Part part, User user) throws MessagingException, IOException {

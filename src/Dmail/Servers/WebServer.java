@@ -97,7 +97,7 @@ public class WebServer {
         http_config.setOutputBufferSize(32768);
 
         ServerConnector http = new ServerConnector(server, new HttpConnectionFactory(http_config));
-        http.setPort(8080);
+        http.setPort(80);
         http.setIdleTimeout(30000);
 
         SslContextFactory sslContextFactory = new SslContextFactory();
@@ -109,7 +109,7 @@ public class WebServer {
         https_config.addCustomizer(new SecureRequestCustomizer());
 
         ServerConnector https = new ServerConnector(server, new SslConnectionFactory(sslContextFactory, "http/1.1"), new HttpConnectionFactory(https_config));
-        https.setPort(8443);
+        https.setPort(443);
         https.setIdleTimeout(500000);
 
         server.setConnectors(new Connector[] { http, https });
