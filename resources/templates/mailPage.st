@@ -157,7 +157,7 @@ mailPage(mails) ::= <<
                                                                                   </div>
                                                                                   <!-- /.modal -->
                                         </div>
-                    <div class="col-md-3" id = "button3">
+                    <div class="col-md-1" id = "button3">
                         <div class="btn-group">
                             <button type="button" class="btn btn-default btn-sm btn-flat dropdown-toggle" data-toggle="dropdown">
                                 Sort by <span class="caret"></span>
@@ -173,7 +173,7 @@ mailPage(mails) ::= <<
                         </div>
 
                     </div>
-                      <div class="col-md-3">
+                      <div class="col-md-5">
                                             <div class="input-append">
                                                 <input class="span2" id="searchcontent" type="text">
                                                 <div class="btn-group">

@@ -91,7 +91,6 @@ public class ViewMail extends HttpServlet {
                 ViewMail p = new ViewMail();
                 String s =  p.getEmailContent(o,user);
 
-
                 ST mailST = templates.getInstanceOf("viewMail");
                 String n = new String(s.getBytes(),"ISO-8859-1");
                 if(newNum > 0)
@@ -178,8 +177,9 @@ public class ViewMail extends HttpServlet {
                 sb.append(s);
             }
         }
-        else if(part.getDisposition()!=null)
+        if(part.getFileName()!=null)
         {
+
             String header[] = part.getHeader("Content-ID");
             if(header == null)
             {
@@ -231,7 +231,7 @@ public class ViewMail extends HttpServlet {
                 {
                     s = s.replaceAll(cid,imgPath);
                 }
-                sb.replace(0,sb.length()-1,s);
+                sb.replace(0,sb.length(),s);
             }
         }
         return sb.toString();
