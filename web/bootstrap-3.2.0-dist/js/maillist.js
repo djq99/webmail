@@ -243,7 +243,7 @@ $(document).ready(
                 $("#button1").html(button1);
                 var button2 = "<button id='deletemail' class='btn btn-danger'>delete email</button>"
                 $("#button2").html(button2);
-                var button3 = "<button id='recoverymail' class='btn btn-danger'>recovery to inbox</button>"
+                var button3 = "<button id='recoverymail' class='btn btn-danger'>recovery</button>"
                 $("#button3").html(button3);
                 if (data.length == 0) {
                     $("#maillist").html("</br><B><font size=5>The Folder is empty</font></B>");

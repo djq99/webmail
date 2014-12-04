@@ -150,7 +150,7 @@ public class ViewMail extends HttpServlet {
             }
             else
             {
-                result = parseContent(part,user);
+                parseContent(part,user);
             }
         }
         return sb.toString();
@@ -179,13 +179,12 @@ public class ViewMail extends HttpServlet {
         }
         if(part.getFileName()!=null)
         {
-
             String header[] = part.getHeader("Content-ID");
             if(header == null)
             {
+
                 //is an attachment not in the html
-                if(part.getDisposition().equals(part.ATTACHMENT))
-                {
+
                     hasAttachment = true;
                     String fileName = part.getFileName();
                     fileName = MimeUtility.decodeText(fileName);
@@ -204,7 +203,7 @@ public class ViewMail extends HttpServlet {
                     a.setAttachmentPath("userResource/"+user.getUserid()+"/"+fileName);
                     a.setAttachmentName(fileName);
                     attachments.add(a);
-                }
+
 
             }
             else

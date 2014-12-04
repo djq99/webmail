@@ -2,9 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c310dfd2-c29b-4809-affa-546c695ab429" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/2014_12_03.request.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/indexPath/1/_f.cfs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/indexPath/1/segments_w" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/userResource/1/1414369037_993695.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/userResource/1/D0CE2E70@F81C8A67.83747F54.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/userResource/1/Homework 7.pages" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/userResource/1/Homework 8.pages" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/userResource/1/bg.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/userResource/1/google.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/userResource/1/profilephoto.png" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Dmail" afterPath="$PROJECT_DIR$/Dmail" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indexPath/1/segments.gen" afterPath="$PROJECT_DIR$/indexPath/1/segments.gen" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Dmail/Servlet/ViewMail.java" afterPath="$PROJECT_DIR$/src/Dmail/Servlet/ViewMail.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Dmail/Servers/WebServer.java" afterPath="$PROJECT_DIR$/src/Dmail/Servers/WebServer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/bootstrap-3.2.0-dist/js/maillist.js" afterPath="$PROJECT_DIR$/web/bootstrap-3.2.0-dist/js/maillist.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="djq99-webmail.iws" />
@@ -31,8 +41,28 @@
       <file leaf-file-name="mailPage.st" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/templates/mailPage.st">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-19.32" vertical-offset="2502" max-vertical-offset="3210">
+            <state vertical-scroll-proportion="0.0" vertical-offset="2097" max-vertical-offset="3210">
               <caret line="199" column="22" selection-start-line="199" selection-start-column="22" selection-end-line="199" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Folder.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Dmail/Servlet/Folder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1040" max-vertical-offset="1755">
+              <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="maillist.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/bootstrap-3.2.0-dist/js/maillist.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-143.33333" vertical-offset="0" max-vertical-offset="8610">
+              <caret line="258" column="25" selection-start-line="258" selection-start-column="25" selection-end-line="258" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -41,8 +71,8 @@
       <file leaf-file-name="WebServer.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Dmail/Servers/WebServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.1257862" vertical-offset="768" max-vertical-offset="1725">
-              <caret line="99" column="21" selection-start-line="99" selection-start-column="21" selection-end-line="99" selection-end-column="21" />
+            <state vertical-scroll-proportion="0.18181819" vertical-offset="1010" max-vertical-offset="1725">
+              <caret line="88" column="51" selection-start-line="88" selection-start-column="51" selection-end-line="88" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -51,7 +81,7 @@
       <file leaf-file-name="SslPopClient.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Dmail/mail/SslPopClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1365" max-vertical-offset="4080">
+            <state vertical-scroll-proportion="0.0" vertical-offset="3270" max-vertical-offset="3825">
               <caret line="91" column="12" selection-start-line="91" selection-start-column="8" selection-end-line="91" selection-end-column="12" />
               <folding />
             </state>
@@ -61,9 +91,41 @@
       <file leaf-file-name="ViewMail.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Dmail/Servlet/ViewMail.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3753" max-vertical-offset="4230">
-              <caret line="154" column="0" selection-start-line="154" selection-start-column="0" selection-end-line="154" selection-end-column="0" />
+            <state vertical-scroll-proportion="-16.25926" vertical-offset="1226" max-vertical-offset="4215">
+              <caret line="137" column="5" selection-start-line="137" selection-start-column="5" selection-end-line="137" selection-end-column="5" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MailDao.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Dmail/dao/MailDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1457" max-vertical-offset="4095">
+              <caret line="117" column="0" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
+              <folding>
+                <marker date="1417660048000" expanded="true" signature="262:401" placeholder="insert into ..." />
+                <marker date="1417660048000" expanded="true" signature="1091:1131" placeholder="select mailI..mail..." />
+                <marker date="1417660048000" expanded="true" signature="1507:1548" placeholder="select conte..mail..." />
+                <marker date="1417660048000" expanded="true" signature="1919:2028" placeholder="select isNew..mail..." />
+                <marker date="1417660048000" expanded="true" signature="2874:2940" placeholder="select isNew..mail..." />
+                <marker date="1417660048000" expanded="true" signature="3467:3536" placeholder="select recei..mail..." />
+                <marker date="1417660048000" expanded="true" signature="3916:3996" placeholder="select count..mail..." />
+                <marker date="1417660048000" expanded="true" signature="4289:4322" placeholder="delete from ..." />
+                <marker date="1417660048000" expanded="true" signature="4557:4605" placeholder="update mail ..." />
+                <marker date="1417660048000" expanded="true" signature="4942:5102" placeholder="select isNew..mail..." />
+                <marker date="1417660048000" expanded="true" signature="5965:6022" placeholder="select count..mail..." />
+                <marker date="1417660048000" expanded="true" signature="6481:6640" placeholder="select isNew..mail..." />
+                <marker date="1417660048000" expanded="true" signature="7509:7558" placeholder="insert into ..." />
+                <marker date="1417660048000" expanded="true" signature="7899:7942" placeholder="update mail ..." />
+                <marker date="1417660048000" expanded="true" signature="8227:8273" placeholder="select folde..folder..." />
+                <marker date="1417660048000" expanded="true" signature="8791:8845" placeholder="delete from ..." />
+                <marker date="1417660048000" expanded="true" signature="9029:9072" placeholder="update mail ..." />
+                <marker date="1417660048000" expanded="true" signature="9347:9401" placeholder="delete from ..." />
+                <marker date="1417660048000" expanded="true" signature="9629:9677" placeholder="update mail ..." />
+                <marker date="1417660048000" expanded="true" signature="9909:9956" placeholder="update mail ..." />
+                <marker date="1417660048000" expanded="true" signature="10203:10342" placeholder="insert into ..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -71,18 +133,8 @@
       <file leaf-file-name="MailList.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Dmail/Servlet/MailList.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="540" max-vertical-offset="2370">
-              <caret line="36" column="22" selection-start-line="36" selection-start-column="22" selection-end-line="36" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/test.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="105">
-              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1370" max-vertical-offset="2085">
+              <caret line="143" column="0" selection-start-line="143" selection-start-column="0" selection-end-line="143" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -101,7 +153,7 @@
       <file leaf-file-name="login.st" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/templates/login.st">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="594" max-vertical-offset="1260">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1140" max-vertical-offset="1260">
               <caret line="76" column="7" selection-start-line="76" selection-start-column="7" selection-end-line="76" selection-end-column="7" />
               <folding />
             </state>
@@ -141,7 +193,6 @@
         <option value="$PROJECT_DIR$/src/Dmail/dao/MailDao.java" />
         <option value="$PROJECT_DIR$/2014_12_02.request.log" />
         <option value="$PROJECT_DIR$/src/Dmail/Servlet/AttachmentUploader.java" />
-        <option value="$PROJECT_DIR$/web/bootstrap-3.2.0-dist/js/maillist.js" />
         <option value="$PROJECT_DIR$/web/bootstrap-3.2.0-dist/js/page.js" />
         <option value="$PROJECT_DIR$/web/bootstrap-3.2.0-dist/js/sort.js" />
         <option value="$PROJECT_DIR$/src/Dmail/Servlet/MailList.java" />
@@ -171,14 +222,16 @@
         <option value="$PROJECT_DIR$/src/Dmail/mail/SslPopClient.java" />
         <option value="$PROJECT_DIR$/resources/templates/mailPage.st" />
         <option value="$PROJECT_DIR$/src/Dmail/Servlet/ViewMail.java" />
+        <option value="$PROJECT_DIR$/web/bootstrap-3.2.0-dist/js/maillist.js" />
         <option value="$PROJECT_DIR$/src/Dmail/Servers/WebServer.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="22" />
-    <option name="width" value="1440" />
-    <option name="height" value="818" />
+    <option name="x" value="-324" />
+    <option name="y" value="33" />
+    <option name="width" value="1881" />
+    <option name="height" value="1057" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -243,8 +296,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -273,6 +324,60 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="djq99-webmail" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="djq99-webmail" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bootstrap-3.2.0-dist" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="djq99-webmail" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="djq99-webmail" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bootstrap-3.2.0-dist" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="djq99-webmail" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="djq99-webmail" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -292,6 +397,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Dmail" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="djq99-webmail" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="djq99-webmail" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Dmail" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Servlet" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -317,8 +444,50 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="djq99-webmail" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="djq99-webmail" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Dmail" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mail" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="djq99-webmail" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="djq99-webmail" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -508,21 +677,23 @@
       <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
       <method />
     </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
-      <method />
-    </configuration>
-    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" package_name="" scope="Class">
-      <option name="BCName" value="" />
-      <option name="launcherParameters">
-        <LauncherParameters>
-          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
-          <option name="launcherType" value="OSDefault" />
-          <option name="newPlayerInstance" value="false" />
-          <option name="playerPath" value="/Applications/Flash Player Debugger.app" />
-        </LauncherParameters>
-      </option>
-      <option name="moduleName" value="" />
-      <option name="trusted" value="true" />
+    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="myFilePath" />
+      <option name="GLUE" />
+      <option name="myNameFilter" />
+      <option name="myGeneratedName" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
@@ -551,25 +722,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="myFilePath" />
-      <option name="GLUE" />
-      <option name="myNameFilter" />
-      <option name="myGeneratedName" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -626,41 +778,6 @@
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
       <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
-      <method />
-    </configuration>
-    <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
-      <option name="BCName" value="" />
-      <option name="IOSSimulatorSdkPath" value="" />
-      <option name="adlOptions" value="" />
-      <option name="airProgramParameters" value="" />
-      <option name="appDescriptorForEmulator" value="Android" />
-      <option name="debugTransport" value="USB" />
-      <option name="debuggerSdkRaw" value="BC SDK" />
-      <option name="emulator" value="NexusOne" />
-      <option name="emulatorAdlOptions" value="" />
-      <option name="fastPackaging" value="true" />
-      <option name="fullScreenHeight" value="0" />
-      <option name="fullScreenWidth" value="0" />
-      <option name="launchUrl" value="false" />
-      <option name="launcherParameters">
-        <LauncherParameters>
-          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
-          <option name="launcherType" value="OSDefault" />
-          <option name="newPlayerInstance" value="false" />
-          <option name="playerPath" value="/Applications/Flash Player Debugger.app" />
-        </LauncherParameters>
-      </option>
-      <option name="mobileRunTarget" value="Emulator" />
-      <option name="moduleName" value="" />
-      <option name="overriddenMainClass" value="" />
-      <option name="overriddenOutputFileName" value="" />
-      <option name="overrideMainClass" value="false" />
-      <option name="runTrusted" value="true" />
-      <option name="screenDpi" value="0" />
-      <option name="screenHeight" value="0" />
-      <option name="screenWidth" value="0" />
-      <option name="url" value="http://" />
-      <option name="usbDebugPort" value="7936" />
       <method />
     </configuration>
     <list size="5">
@@ -738,14 +855,15 @@
       <workItem from="1417487797632" duration="40019000" />
       <workItem from="1417638797806" duration="4983000" />
       <workItem from="1417645523291" duration="933000" />
+      <workItem from="1417660104036" duration="3458000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="660590000" />
+    <option name="totallyTimeSpent" value="664048000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1440" height="818" extended-state="0" />
+    <frame x="-324" y="33" width="1881" height="1057" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -769,8 +887,8 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17430556" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3257677" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13343966" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24696356" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -780,11 +898,11 @@
     <layout-to-restore>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -803,8 +921,8 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32309747" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
@@ -834,6 +952,22 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/Dmail/Servlet/SendMail.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="705" max-vertical-offset="900">
+          <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/templates/login.st">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1140" max-vertical-offset="1260">
+          <caret line="76" column="7" selection-start-line="76" selection-start-column="7" selection-end-line="76" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Dmail/Servers/WebServer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1665" max-vertical-offset="1905">
@@ -862,14 +996,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="540" max-vertical-offset="2370">
           <caret line="36" column="22" selection-start-line="36" selection-start-column="22" selection-end-line="36" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/test.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="105">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1009,13 +1135,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Dmail/Servlet/Folder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1755">
-          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Dmail/Servlet/Search.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-12.777778" vertical-offset="0" max-vertical-offset="870">
@@ -1045,13 +1164,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Dmail/dao/MailDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="508" max-vertical-offset="4155">
-          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Dmail/dao/UserDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="549" max-vertical-offset="1185">
@@ -1063,13 +1175,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1050">
           <caret line="33" column="35" selection-start-line="33" selection-start-column="35" selection-end-line="33" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/bootstrap-3.2.0-dist/js/maillist.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1065" max-vertical-offset="8610">
-          <caret line="60" column="49" selection-start-line="60" selection-start-column="49" selection-end-line="60" selection-end-column="49" />
         </state>
       </provider>
     </entry>
@@ -1159,22 +1264,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/test.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="105">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Dmail/Servlet/MailList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2085">
-          <caret line="36" column="22" selection-start-line="36" selection-start-column="22" selection-end-line="36" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Dmail/mail/SslPopClient.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1365" max-vertical-offset="4080">
@@ -1183,26 +1272,80 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Dmail/Servlet/ViewMail.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.25926" vertical-offset="1226" max-vertical-offset="4215">
+          <caret line="137" column="5" selection-start-line="137" selection-start-column="5" selection-end-line="137" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Dmail/dao/MailDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1457" max-vertical-offset="4095">
+          <caret line="117" column="0" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
+          <folding>
+            <marker date="1417660048000" expanded="true" signature="262:401" placeholder="insert into ..." />
+            <marker date="1417660048000" expanded="true" signature="1091:1131" placeholder="select mailI..mail..." />
+            <marker date="1417660048000" expanded="true" signature="1507:1548" placeholder="select conte..mail..." />
+            <marker date="1417660048000" expanded="true" signature="1919:2028" placeholder="select isNew..mail..." />
+            <marker date="1417660048000" expanded="true" signature="2874:2940" placeholder="select isNew..mail..." />
+            <marker date="1417660048000" expanded="true" signature="3467:3536" placeholder="select recei..mail..." />
+            <marker date="1417660048000" expanded="true" signature="3916:3996" placeholder="select count..mail..." />
+            <marker date="1417660048000" expanded="true" signature="4289:4322" placeholder="delete from ..." />
+            <marker date="1417660048000" expanded="true" signature="4557:4605" placeholder="update mail ..." />
+            <marker date="1417660048000" expanded="true" signature="4942:5102" placeholder="select isNew..mail..." />
+            <marker date="1417660048000" expanded="true" signature="5965:6022" placeholder="select count..mail..." />
+            <marker date="1417660048000" expanded="true" signature="6481:6640" placeholder="select isNew..mail..." />
+            <marker date="1417660048000" expanded="true" signature="7509:7558" placeholder="insert into ..." />
+            <marker date="1417660048000" expanded="true" signature="7899:7942" placeholder="update mail ..." />
+            <marker date="1417660048000" expanded="true" signature="8227:8273" placeholder="select folde..folder..." />
+            <marker date="1417660048000" expanded="true" signature="8791:8845" placeholder="delete from ..." />
+            <marker date="1417660048000" expanded="true" signature="9029:9072" placeholder="update mail ..." />
+            <marker date="1417660048000" expanded="true" signature="9347:9401" placeholder="delete from ..." />
+            <marker date="1417660048000" expanded="true" signature="9629:9677" placeholder="update mail ..." />
+            <marker date="1417660048000" expanded="true" signature="9909:9956" placeholder="update mail ..." />
+            <marker date="1417660048000" expanded="true" signature="10203:10342" placeholder="insert into ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Dmail/Servlet/MailList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1370" max-vertical-offset="2085">
+          <caret line="143" column="0" selection-start-line="143" selection-start-column="0" selection-end-line="143" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/templates/mailPage.st">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.32" vertical-offset="2502" max-vertical-offset="3210">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2502" max-vertical-offset="3210">
           <caret line="199" column="22" selection-start-line="199" selection-start-column="22" selection-end-line="199" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Dmail/Servlet/ViewMail.java">
+    <entry file="file://$PROJECT_DIR$/src/Dmail/Servlet/Folder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3753" max-vertical-offset="4230">
-          <caret line="154" column="0" selection-start-line="154" selection-start-column="0" selection-end-line="154" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1040" max-vertical-offset="1755">
+          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/bootstrap-3.2.0-dist/js/maillist.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-143.33333" vertical-offset="0" max-vertical-offset="8610">
+          <caret line="258" column="25" selection-start-line="258" selection-start-column="25" selection-end-line="258" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Dmail/Servers/WebServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.1257862" vertical-offset="768" max-vertical-offset="1725">
-          <caret line="99" column="21" selection-start-line="99" selection-start-column="21" selection-end-line="99" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.18181819" vertical-offset="1010" max-vertical-offset="1725">
+          <caret line="88" column="51" selection-start-line="88" selection-start-column="51" selection-end-line="88" selection-end-column="51" />
           <folding />
         </state>
       </provider>
