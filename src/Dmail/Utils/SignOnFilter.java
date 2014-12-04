@@ -28,6 +28,7 @@ public class SignOnFilter implements Filter {
 
         HttpSession session = req.getSession();
         if (session.getAttribute("userinfo") != null) {
+            res.sendRedirect("mail");
             chain.doFilter(request, response);
         } else {
             res.sendRedirect("login");
